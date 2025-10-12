@@ -31,7 +31,7 @@ body {
 .navList a:nth-child(n+13) { color: #ffb529; }
 
 .candyCorn { 
-  content: url(./candycorn.gif);
+  content: url(./assets/images/candycorn.gif);
   margin: 0 9px; 
 }
 
@@ -74,6 +74,7 @@ body {
   font-size: 32px;
   padding: 15px 0;
   max-width: 590px;
+  margin: 0 auto;
 }
 
 #content {
