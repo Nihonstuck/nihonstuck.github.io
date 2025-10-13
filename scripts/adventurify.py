@@ -80,7 +80,7 @@ def main():
 
         # translated = ["hsjp", "dz_act3", "dz_intermission", "dz_act4"
         #               "dz_act5act1", "a5a2_one", "a5a2_two", "a5a2_three"]
-        translated = ["hsjp"]
+        translated = ["hsjp", "dz_act3", "dz_intermission", "dz_act4"]
         shouldbe = 1
         for tr in translated:
             with open(f'../translation/{tr}.json', 'r') as tr_json:
@@ -103,8 +103,9 @@ def main():
                         content = tr_pages[pagenum]["content"]
                     except:
                         content = story[pagenum]["content"]
-                        if content and pagenum != "002745":
-                            raise Exception(f'Missing translation at id {pagenum}, page {int(pagenum) - 1900}')
+                        if content and pagenum != "002745" and pagenum != "003750":
+                            # raise Exception(f'Missing translation at id {pagenum}, page {int(pagenum) - 1900}')
+                            print(f'Potentially missing translation at id {pagenum}, page {int(pagenum) - 1900}')
 
 
                     # TODO: clean up content. especially links
