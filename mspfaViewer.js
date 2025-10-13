@@ -60,9 +60,10 @@ window.MSPFA = {
     e.innerHTML = code;
     var es = e.querySelectorAll("*");
     for(var i = es.length-1; i >= 0; i--) {
-      if(es[i].tagName == "SCRIPT") {
-        es[i].parentNode.removeChild(es[i]);
-      } else if(es[i].tagName == "PARAM") {
+      // if(es[i].tagName == "SCRIPT") {
+      //   es[i].parentNode.removeChild(es[i]);
+      // } else 
+      if(es[i].tagName == "PARAM") {
         if(es[i].name.trim() == "allowScriptAccess") {
           es[i].parentNode.removeChild(es[i]);
         }
