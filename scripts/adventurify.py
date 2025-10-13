@@ -33,18 +33,11 @@ url = "https://file.garden/aOgKdPFhxWt7Kb9m" # + "/storyfiles/hs2/00002.gif"
 #     return body
 
 
-def flashformat(media, bodytext):
-    body = ""
-    for m in media:
-        body += f'[flash=650x450]{url + m}[/flash]<br><br>'
-    body += bodytext
-    return body
 
-def imageformat(media, bodytext):
+def mediaformat(media, text, opentag, closetag):
     body = ""
     for m in media:
-        body += f'[img]{url + m}[/img]<br><br>'
-    text = bodytext
+        body += f'[{opentag}]{url + m}[{closetag}]<br><br>'
     if text.startswith("|"):
         match text[0:11]:
             case "|PESTERLOG|":
@@ -66,6 +59,12 @@ def imageformat(media, bodytext):
         body = body.removesuffix('<br><br>')
 
     return body
+
+def flashformat(media, bodytext):
+    return mediaformat(media, bodytext, "flash=650x450", "/flash")
+
+def imageformat(media, bodytext):
+    return mediaformat(media, bodytext, "img", "/img")
 
 
 def main():
