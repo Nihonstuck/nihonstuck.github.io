@@ -66,6 +66,21 @@ def flashformat(media, bodytext):
 def imageformat(media, bodytext):
     return mediaformat(media, bodytext, "img", "/img")
 
+def link_cleanup(body):
+    replace = {
+        "http://www.mspaintadventures.com/storyfiles/hs2/waywardvagabond/": "https://nihonstuck.github.io/story/waywardvagabond/",
+        "http://www.mspaintadventures.com/": url + "/",
+    }
+    # TODO: normal pages, e.g. "http://www.mspaintadventures.com/?s=6&amp;p=002069"
+    # TODO: sbahj
+
+    for r in replace:
+        body = body.replace(r, replace[r])
+    return body
+
+    # TODO: page 845, get rid of Gankra thing
+    # TODO: also the conair bunny page
+
 
 def main():
     with open('../translation/mspa.json', 'r') as mspa:
@@ -114,6 +129,8 @@ def main():
                         body = flashformat(story[pagenum]["media"], content)
                     else:
                         body = imageformat(story[pagenum]["media"], content)
+
+                    body = link_cleanup(body)
 
                     newpage["b"] = body
 
