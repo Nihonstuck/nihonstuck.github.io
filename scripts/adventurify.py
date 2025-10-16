@@ -70,6 +70,7 @@ def imageformat(media, bodytext):
 def link_cleanup(body):
     replace = {
         "http://www.mspaintadventures.com/storyfiles/hs2/waywardvagabond/": "/story/waywardvagabond/",
+        "http://www.mspaintadventures.com/?s=6&": "/?s=6&",
         "http://www.mspaintadventures.com/sweetbroandhellajeff/": "/sweetbroandhellajeff/",
         "http://www.mspaintadventures.com/": url + "/",
     }
@@ -80,6 +81,12 @@ def link_cleanup(body):
     for u in re.findall("cid=[0-9][0-9][0-9].jpg", body):
         sbahj = u.removesuffix(".jpg").removeprefix("cid=")
         v = "p=" + str(int(sbahj))
+        replace[u] = v
+        print(f"REPLACE {u} WITH {v}")
+
+    for u in re.findall("s=6&amp;p=[0-9][0-9][0-9][0-9][0-9][0-9]", body):
+        sbahj = u.removeprefix("s=6&amp;p=")
+        v = "p=" + str(int(sbahj) - 1900)
         replace[u] = v
         print(f"REPLACE {u} WITH {v}")
 
