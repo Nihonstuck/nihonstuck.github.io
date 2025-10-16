@@ -69,7 +69,7 @@ def imageformat(media, bodytext):
 
 def link_cleanup(body):
     replace = {
-        "http://www.mspaintadventures.com/storyfiles/hs2/waywardvagabond/": "https://nihonstuck.github.io/story/waywardvagabond/",
+        "http://www.mspaintadventures.com/storyfiles/hs2/waywardvagabond/": "/story/waywardvagabond/",
         "http://www.mspaintadventures.com/": url + "/",
     }
     # TODO: normal pages, e.g. "http://www.mspaintadventures.com/?s=6&amp;p=002069"

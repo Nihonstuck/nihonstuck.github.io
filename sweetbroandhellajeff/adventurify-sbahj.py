@@ -19,9 +19,20 @@ def main():
     for pagenum in range(1, curr_page_count + 1):
         newpage = {}
         newpage["d"] = 1232442780000
-        newpage["c"] = f"Comic #{pagenum}"
+        newpage["c"] = "8^y"
         newpage["n"] = [pagenum + 1]
-        newpage["b"] = f"https://file.garden/aOgKdPFhxWt7Kb9m/images/sbahj/archive/{pagenum:03}.jpg"
+        # newpage["b"] = f"[img]https://file.garden/aOgKdPFhxWt7Kb9m/images/sbahj/archive/{pagenum:03}.jpg[/img]"
+        # TODO: How do we work with the buttons?
+        imgnext = f'<span><a href="/sweetbroandhellajeff/?p={pagenum+1}"><img src="https://file.garden/aOgKdPFhxWt7Kb9m/images/sbahj/next.jpg"></a></span>' 
+        imgfirst = f'<span><a href="/sweetbroandhellajeff/?p=1"><img src="https://file.garden/aOgKdPFhxWt7Kb9m/images/sbahj/first.jpg"></a></span>' 
+        if pagenum == 1:
+            imgback = f'<span><a href="/sweetbroandhellajeff/?p=1"><img src="https://file.garden/aOgKdPFhxWt7Kb9m/images/sbahj/back.jpg"></a></span>' 
+        else:
+            imgback = f'<span><a href="/sweetbroandhellajeff/?p={pagenum-1}"><img src="https://file.garden/aOgKdPFhxWt7Kb9m/images/sbahj/back.jpg"></a></span>' 
+        imglast = f'<span><a href="/sweetbroandhellajeff/?p=24"><img src="https://file.garden/aOgKdPFhxWt7Kb9m/images/sbahj/new.jpg"></a></span>' 
+        pagenav = imgfirst + imgback + imgnext + imglast
+        mainimg = f'<img src="https://file.garden/aOgKdPFhxWt7Kb9m/images/sbahj/archive/{pagenum:03}.jpg">'
+        newpage["b"] = pagenav + "<br><br>" + mainimg + "<br><br>" + pagenav
 
         page_list.append(newpage)
 
