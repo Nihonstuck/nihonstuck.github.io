@@ -1,5 +1,6 @@
 import json
 import sys
+import re
 
 dummypage = {
     "d": 1239537600000,
