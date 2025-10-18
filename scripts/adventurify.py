@@ -108,7 +108,7 @@ def main():
         final_output["r"] = "少年と友達がゲームをする物語です。約8,000ページ。警告済みです。"
         page_list = []
 
-        translated = ["hsjp", "dz_act3", "dz_intermission", "dz_act4", "dz_act5act1"]
+        translated = ["hsjp", "dz_act3", "dz_intermission", "dz_act4", "dz_act5act1", "a5a2_one", "a5a2_two"]
         shouldbe = 1
         for tr in translated:
             with open(f'../translation/{tr}.json', 'r') as tr_json:

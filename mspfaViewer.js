@@ -278,7 +278,7 @@ const loadLog = () => {
   // Generate Log link list
   let ul = document.createElement("ul")
   adventureData.p.filter(p => p.d < new Date().getTime()).forEach((pageData, index) => {
-    const date = new Date(pageData.d).toLocaleDateString("en-US")
+    const date = new Date(pageData.d).toLocaleDateString("ja")
 
     const a = document.createElement("a")
     a.href = `?p=${index + 1}`
@@ -296,7 +296,7 @@ const loadLog = () => {
   ul.style.listStyleType = "none"
   ul.style.padding = "0"
 
-  loadIntoElement("command", MSPFA.parseBBCode(adventureData.n + " LOG"))
+  loadIntoElement("command", MSPFA.parseBBCode(adventureData.n + "のログ"))
   loadIntoElement("content", ul)
   loadIntoElement("links", MSPFA.parseBBCode(""))
 }
