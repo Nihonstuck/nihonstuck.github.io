@@ -38,7 +38,10 @@ url = "https://file.garden/aOgKdPFhxWt7Kb9m" # + "/storyfiles/hs2/00002.gif"
 def mediaformat(media, text, opentag, closetag):
     body = ""
     for m in media:
-        body += f'[{opentag}]{url + m}[{closetag}]<br><br>'
+        if opentag == "img":
+            body += f'[{opentag} class="storyPanel"]{url + m}[{closetag}]<br><br>'
+        else:
+            body += f'[{opentag}]{url + m}[{closetag}]<br><br>'
     if text.startswith("|"):
         match text[0:11]:
             case "|PESTERLOG|":

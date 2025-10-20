@@ -89,7 +89,10 @@ body {
   text-align: center;
 }
 
-#content img {
+/* #content img { */
+/*   margin: 0 -25px; */
+/* } */
+.storyPanel {
   margin: 0 -25px;
 }
 
