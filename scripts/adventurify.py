@@ -39,9 +39,11 @@ def mediaformat(media, text, opentag, closetag):
     body = ""
     for m in media:
         if opentag == "img":
-            body += f'[{opentag} class="storyPanel"]{url + m}[{closetag}]<br><br>'
+            # body += f'[{opentag} class="storyPanel"]{url + m}[{closetag}]<br><br>'
+            body += f'<img class="storyPanel" src="{url + m}"><br><br>'
         else:
             body += f'[{opentag}]{url + m}[{closetag}]<br><br>'
+    body += "<br>"
     if text.startswith("|"):
         match text[0:11]:
             case "|PESTERLOG|":
