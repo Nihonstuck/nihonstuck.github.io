@@ -58,8 +58,11 @@ def mediaformat(media, text, opentag, closetag):
             case "|JOURNALOG|":
                 text = text.removeprefix("|JOURNALOG|")
                 text = '[spoiler open="日ログを表示" close="日ログを非表示"]' + text + '[/spoiler]'
+            case "|SRIOUSBIZ|":
+                text = text.removeprefix("|SRIOUSBIZ|")
+                text = '[spoiler open="真面目なビジネスを表示" close="真面目なビジネスを非表示"]' + text + '[/spoiler]'
             case _:
-                raise Exception("Unhandled case")
+                raise Exception("Unhandled case:", text[0:11])
     body += text
     if body.endswith('<br><br>'):
         body = body.removesuffix('<br><br>')
@@ -113,7 +116,7 @@ def main():
         final_output["r"] = "少年と友達がゲームをする物語です。約8,000ページ。警告済みです。"
         page_list = []
 
-        translated = ["hsjp", "dz_act3", "dz_intermission", "dz_act4", "dz_act5act1", "a5a2_one", "a5a2_two"]
+        translated = ["hsjp", "dz_act3", "dz_intermission", "dz_act4", "dz_act5act1", "a5a2_one", "a5a2_two", "a5a2_three"]
         shouldbe = 1
         for tr in translated:
             with open(f'../translation/{tr}.json', 'r') as tr_json:
