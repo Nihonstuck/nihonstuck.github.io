@@ -1,0 +1,10 @@
+defaults:
+  - scope:
+      path: "/story/waywardvagabond/"
+    values:
+      layout: "exile"
+      cssStyle: "exilestyle"
+  - scope:
+      path: ""
+    values:
+      layout: "default"

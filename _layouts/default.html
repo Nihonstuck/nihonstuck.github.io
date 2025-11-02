@@ -6,9 +6,12 @@
 
   <link id="favicon" rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
 
+  <!-- <link rel="stylesheet" href="/assets/css/{{ page.cssStyle }}.css"> -->
   <link rel="stylesheet" href="/assets/css/uhcstyle.css">
+  {% if page.hasViewer == true %}
   <!-- <script src="https://flaringk.github.io/mspfaViewer/mspfaViewer.js"></script> -->
-  <script src="/mspfaViewer.js"></script>
+  <script src="/assets/js/mspfaViewer.js"></script>
+  {% endif %}
   <style id="adventureStyle"></style>
 </head>
 <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
@@ -43,7 +46,7 @@
       <div class="pageFrame">
         <div class="pageContent">
           <div class="story-text">
-            <div id="command"></div>
+            <div id="command">{{ page.command }}</div>
             <div id="content">{{ content }}</div>
             <div id="links"></div>
 
@@ -59,8 +62,8 @@
         </div>
       </div>
       <div class="footer " style="width: 950px;">
-        <a href="/"><img src="./assets/images/mspalogo_mspa.png" alt="" draggable="false" class="bannerImage left"></a>
-        <a href="/"><img src="./assets/images/mspalogo_mspa.png" alt="" draggable="false" class="bannerImage right"></a>
+        <a href="/"><img src="/assets/images/mspalogo_mspa.png" alt="" draggable="false" class="bannerImage left"></a>
+        <a href="/"><img src="/assets/images/mspalogo_mspa.png" alt="" draggable="false" class="bannerImage right"></a>
       </div>
     </div>
   </div>
