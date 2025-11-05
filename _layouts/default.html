@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <title>ホームスタック</title>
+
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+
+  <!-- <link rel="stylesheet" href="/assets/css/{{ page.cssStyle }}.css"> -->
+  <link rel="stylesheet" href="/assets/css/uhcstyle.css">
+  {% if page.hasViewer == true %}
+  <!-- <script src="https://flaringk.github.io/mspfaViewer/mspfaViewer.js"></script> -->
+  <script src="/assets/js/mspfaViewer.js"></script>
+  {% endif %}
+  <style id="adventureStyle"></style>
+</head>
+<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+<body>
+  <div class="main">
+    <div class="pageBody">
+      {% if page.showNavBar == true %}
+      <nav class="navBanner customNavBanner pixelated">
+        <div class="navList">
+          <a href="https://mspfa.com/">MSPFA</a> 
+          <div class="candyCorn"></div>
+          <a href="/help">HELP</a> 
+          <div class="candyCorn"></div>
+          <a href="/map">MAP</a> 
+          <div class="sep">|</div> 
+          <a href="?p=log">ログ</a> 
+          <div class="sep">|</div>
+          <a href="/search">SEARCH</a> 
+          <div class="candyCorn"></div>
+          <a href="/news">NEWS</a> 
+          <div class="sep">|</div>
+          <a href="https://homestuck.bandcamp.com/">音楽</a> 
+          <div class="candyCorn"></div>
+          <a href="/evenmore">MORE</a> 
+          <div class="sep">|</div>
+          <a href="/settings">SETTINGS</a> 
+          <div class="sep">|</div>
+          <a href="/credits">CREDITS</a>  
+        </div>
+      </nav>
+      {% endif %}
+      <div class="pageFrame">
+        <div class="pageContent">
+          <div class="story-text">
+            <div id="command">{{ page.command }}</div>
+            <div id="content">{{ content }}</div>
+            <div id="links"></div>
+
+            {% if page.showBottomLinks == true %}
+            <div class="bottomLinks"> 
+              <a id="startover" href="?p=1">初めからやり直す</a> 
+              <span id="gobackbar"> | </span> 
+              <a id="goback">戻る</a> 
+            </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+      <div class="footer " style="width: 950px;">
+        <a href="/"><img src="/assets/images/mspalogo_mspa.png" alt="" draggable="false" class="bannerImage left"></a>
+        <a href="/"><img src="/assets/images/mspalogo_mspa.png" alt="" draggable="false" class="bannerImage right"></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="prelaod" style="display: none;"></div>
+</body>
+</html>
