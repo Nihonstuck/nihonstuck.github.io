@@ -4,6 +4,10 @@ body {
   font-family: 'Courier New', Courier, monospace;
 }
 
+ruffle-object {
+    margin: 0 -25px
+}
+
 .navList {
   width: 950px;
   height: 17px;
