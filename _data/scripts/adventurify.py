@@ -161,7 +161,7 @@ def main():
         final_output["p"] = page_list
         json_object = json.dumps(final_output, indent=4, ensure_ascii=False).encode("utf8")
 
-        with open('../adventure.json', "wb") as outfile:
+        with open('../../assets/json/adventure.json', "wb") as outfile:
             outfile.write(json_object)
 
 if __name__ == "__main__":

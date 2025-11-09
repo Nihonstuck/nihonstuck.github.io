@@ -51,6 +51,18 @@ ruffle-object {
   font-weight: 600;
 }
 
+.p6 .pageFrame {
+  background: #c600c6;
+  width: 950px;
+  padding-top: 7px;
+  padding-bottom: 23px;
+  margin: 0 auto;
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+}
+
 .pageContent {
   background: #eee;
   max-width: 950px;

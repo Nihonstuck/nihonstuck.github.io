@@ -7,7 +7,8 @@
   <link id="favicon" rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
 
   <!-- <link rel="stylesheet" href="/assets/css/{{ page.cssStyle }}.css"> -->
-  <link rel="stylesheet" href="/assets/css/uhcstyle.css">
+  <!-- <link rel="stylesheet" href="/assets/css/uhcstyle.css"> -->
+  <link rel="stylesheet" href="/assets/css/scratchstyle.css">
   {% if page.hasViewer == true %}
   <!-- <script src="https://flaringk.github.io/mspfaViewer/mspfaViewer.js"></script> -->
   <script src="/assets/js/mspfaViewer.js"></script>
@@ -18,30 +19,11 @@
 <body>
   <div class="main">
     <div class="pageBody">
+      <div class="header" style="width: 950px;">
+        <img src="/assets/images/room.gif">
+      </div>
       {% if page.showNavBar == true %}
-      <nav class="navBanner customNavBanner pixelated">
-        <div class="navList">
-          <a href="https://mspfa.com/">MSPFA</a> 
-          <div class="candyCorn"></div>
-          <a href="/help">HELP</a> 
-          <div class="candyCorn"></div>
-          <a href="/map">MAP</a> 
-          <div class="sep">|</div> 
-          <a href="?p=log">ログ</a> 
-          <div class="sep">|</div>
-          <a href="/search">SEARCH</a> 
-          <div class="candyCorn"></div>
-          <a href="/news">NEWS</a> 
-          <div class="sep">|</div>
-          <a href="https://homestuck.bandcamp.com/">音楽</a> 
-          <div class="candyCorn"></div>
-          <a href="/evenmore">MORE</a> 
-          <div class="sep">|</div>
-          <a href="/settings">SETTINGS</a> 
-          <div class="sep">|</div>
-          <a href="/credits">CREDITS</a>  
-        </div>
-      </nav>
+      {% include navigation.html %}
       {% endif %}
       <div class="pageFrame">
         <div class="pageContent">
