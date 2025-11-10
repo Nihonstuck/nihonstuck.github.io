@@ -71,6 +71,7 @@ def mediaformat(media, text, opentag, closetag):
 
 def flashformat(media, bodytext):
     return mediaformat(media, bodytext, "flash=650x450", "/flash")
+# TODO: for the clocks (pages 3851 and 3860) it's 650 x 1610
 
 def imageformat(media, bodytext):
     return mediaformat(media, bodytext, "img", "/img")

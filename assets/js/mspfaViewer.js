@@ -216,6 +216,30 @@ const loadPage = () => {
 
   const p = getUrlPage()
 
+
+    // from 3764 to 4081
+    // p4082 is temporarily SBaHJ
+    // 3797 is when the ROOMS start changing (room02)
+  if (!isNaN(p) && 3764 <= p && p <= 4081) {
+    filegarden = "https://file.garden/aOgKdPFhxWt7Kb9m/storyfiles/hs2/scratch/"
+    document.getElementById("cssSet").href = "/assets/css/scratchstyle.css"
+    document.getElementById("headerDiv").style.display = "flex"
+    if (p < 3797) {
+        document.getElementById("headerImg").src = filegarden + "room.gif"
+    } else if (p <= 3874) {
+        temp = p - 3795 // 3797 --> room02.png
+        pString = temp.toString()
+        if (pString.length == 1) { pString = "0" + pString }
+        document.getElementById("headerImg").src = filegarden + "room" + pString + ".gif"
+    }
+    // document.getElementById("headerImg").title = "hover text is working!"
+  } else {
+    document.getElementById("cssSet").href = "/assets/css/uhcstyle.css"
+    document.getElementById("headerDiv").style.display = "none"
+    document.getElementById("headerImg").src = ""
+  }
+    // TODO: use this to update CSS and also make the banner hidden (display: none)
+
   document.body.className = "mspfa p" + p
   
   document.getElementById("gobackbar").style.display = "none"
