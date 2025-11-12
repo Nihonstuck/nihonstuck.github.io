@@ -150,6 +150,10 @@ def main():
                     body = ""
                     if "F" in story[pagenum]["flag"]:
                         body = flashformat(story[pagenum]["media"], content)
+                        if pagenum == "005751" or pagenum == "005760":
+                            body = body.replace("650x450", "650x1610")
+# TODO: for the clocks (pages 3851 and 3860) it's 650 x 1610
+
                     else:
                         body = imageformat(story[pagenum]["media"], content)
 

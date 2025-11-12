@@ -39,20 +39,10 @@ ruffle-object {
   margin: 0 9px; 
 }
 
+/* TODO: do the same as above for the faces in the footer */
+
 .pageFrame {
   background: #c6c6c6;
-  width: 950px;
-  padding-top: 7px;
-  padding-bottom: 23px;
-  margin: 0 auto;
-  flex: 0 1 auto;
-  display: flex;
-  justify-content: center;
-  font-weight: 600;
-}
-
-.p6 .pageFrame {
-  background: #c600c6;
   width: 950px;
   padding-top: 7px;
   padding-bottom: 23px;

@@ -217,28 +217,6 @@ const loadPage = () => {
   const p = getUrlPage()
 
 
-    // from 3764 to 4081
-    // p4082 is temporarily SBaHJ
-    // 3797 is when the ROOMS start changing (room02)
-  if (!isNaN(p) && 3764 <= p && p <= 4081) {
-    filegarden = "https://file.garden/aOgKdPFhxWt7Kb9m/storyfiles/hs2/scratch/"
-    document.getElementById("cssSet").href = "/assets/css/scratchstyle.css"
-    document.getElementById("headerDiv").style.display = "flex"
-    if (p < 3797) {
-        document.getElementById("headerImg").src = filegarden + "room.gif"
-    } else if (p <= 3874) {
-        temp = p - 3795 // 3797 --> room02.png
-        pString = temp.toString()
-        if (pString.length == 1) { pString = "0" + pString }
-        document.getElementById("headerImg").src = filegarden + "room" + pString + ".gif"
-    }
-    // document.getElementById("headerImg").title = "hover text is working!"
-  } else {
-    document.getElementById("cssSet").href = "/assets/css/uhcstyle.css"
-    document.getElementById("headerDiv").style.display = "none"
-    document.getElementById("headerImg").src = ""
-  }
-    // TODO: use this to update CSS and also make the banner hidden (display: none)
 
   document.body.className = "mspfa p" + p
   
@@ -296,6 +274,70 @@ const loadPage = () => {
 
   // FINAL run all MSPFA slides
   MSPFA.slide.forEach(func => func())
+
+
+
+    // from 3764 to 4081
+    // p4082 is temporarily SBaHJ
+    // 3797 is when the ROOMS start changing (room02)
+  if (!isNaN(p) && 3764 <= p && p <= 4081) {
+    filegarden = "https://file.garden/aOgKdPFhxWt7Kb9m/storyfiles/hs2/scratch/"
+    document.getElementById("cssSet").href = "/assets/css/scratchstyle.css"
+    document.getElementById("headerDiv").style.display = "flex"
+    if (p < 3797) {
+        document.getElementById("headerImg").src = filegarden + "room.gif"
+    } else if (p <= 3874) {
+        temp = p - 3795 // 3797 --> room02.png
+        pString = temp.toString()
+        if (pString.length == 1) { pString = "0" + pString }
+        document.getElementById("headerImg").src = filegarden + "room" + pString + ".gif"
+    } else if (p == 4036) {
+        document.getElementById("headerImg").src = filegarden + "room86.gif"
+    } else if (4036 < p && p < 4052) {
+        document.getElementById("headerImg").src = filegarden + "room87.gif"
+    } else if (p >= 4052) {
+        temp = p - 3964 // 4052 --> room88.png
+        pString = temp.toString()
+        document.getElementById("headerImg").src = filegarden + "room" + pString + ".gif"
+    } else {
+        pString = ""
+        switch (p) {
+            case 3874:
+                pString = "79"
+                break;
+            case 3895:
+                pString = "81"
+                break;
+            case 3936:
+                pString = "82"
+                break;
+            case 3974:
+                pString = "83"
+                break;
+            case 4002:
+                // TODO: the run from 4002 to 4019 uses room 85 as header not room 80
+                pString = "84"
+                break;
+            default:
+                pString = ""
+        }
+        if (4002 < p && p < 4036) { pString = "85" }
+        else { pString = "80" }
+        document.getElementById("headerImg").src = filegarden + "room" + pString + ".gif"
+    }
+    // document.getElementById("headerImg").title = "hover text is working!"
+  } else if (p == 4082) {
+    document.getElementById("cssSet").href = "/assets/css/sbahjstyle.css"
+    document.getElementById("headerDiv").style.display = "none"
+    document.getElementById("headerImg").src = ""
+  } else {
+    document.getElementById("cssSet").href = "/assets/css/uhcstyle.css"
+    document.getElementById("headerDiv").style.display = "none"
+    document.getElementById("headerImg").src = ""
+  }
+    // TODO: hussie alt text 
+    // TODO: LE cool images
+    //
 }
 
 const loadLog = () => {
