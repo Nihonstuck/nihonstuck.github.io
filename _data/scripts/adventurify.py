@@ -148,10 +148,12 @@ def main():
                     # TODO: clean up content. especially links
 
                     body = ""
-                    if "F" in story[pagenum]["flag"]:
+                    if "F" in story[pagenum]["flag"] or pagenum == "006009":
                         body = flashformat(story[pagenum]["media"], content)
                         if pagenum == "005751" or pagenum == "005760":
                             body = body.replace("650x450", "650x1610")
+                        elif pagenum == "006009":
+                            body = body.replace("650x450", "950x650")
 # TODO: for the clocks (pages 3851 and 3860) it's 650 x 1610
 
                     else:
