@@ -1,3 +1,16 @@
+// does this go here?
+window.RufflePlayer = window.RufflePlayer || {};
+window.RufflePlayer.config = {
+    // Merge with any existing config, such as the user's extension config. Options you set below will have priority.
+    ...window.RufflePlayer.config,
+
+    "autoplay": "on",
+    "openUrlMode": "allow",
+    "allowNetworking": "all",
+    // "fontSources": [],
+    // "defaultFonts": {},
+};
+
 // MSPFA JS
 window.MSPFA = {
   BBC: [
@@ -230,6 +243,18 @@ const loadPage = () => {
     return
   }
 
+
+  if (p == "pony") {
+      loadPony()
+      return
+  }
+
+
+  if (p == "WDGASTER") {
+      loadGaster()
+      return
+  }
+
   // If page number too large
   if (!isNaN(p) && p > adventureData.p.length) {
     loadIntoElement("command", MSPFA.parseBBCode("No page found"))
@@ -370,6 +395,20 @@ const loadLog = () => {
   loadIntoElement("command", MSPFA.parseBBCode(adventureData.n + "のログ"))
   loadIntoElement("content", ul)
   loadIntoElement("links", MSPFA.parseBBCode(""))
+}
+
+const loadGaster = () => {
+  loadIntoElement("command", MSPFA.parseBBCode("GASTER????"))
+  loadIntoElement("content", MSPFA.parseBBCode("[flash=650x450]/assets/luis.swf[/flash]"))
+  loadIntoElement("links", MSPFA.parseBBCode(""))
+  loadIntoElement("startover", MSPFA.parseBBCode(""))
+}
+
+const loadPony = () => {
+  loadIntoElement("command", MSPFA.parseBBCode("[S] 乗れ。"))
+  loadIntoElement("content", MSPFA.parseBBCode("[flash=650x450]https://file.garden/aOgKdPFhxWt7Kb9m/storyfiles/hs2/pony/pony_hq.swf[/flash]"))
+  loadIntoElement("links", MSPFA.parseBBCode(""))
+  loadIntoElement("startover", MSPFA.parseBBCode(""))
 }
 
 const preloadImages = pageIndex => {

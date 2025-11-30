@@ -61,6 +61,9 @@ def mediaformat(media, text, opentag, closetag):
             case "|SRIOUSBIZ|":
                 text = text.removeprefix("|SRIOUSBIZ|")
                 text = '[spoiler open="真面目なビジネスを表示" close="真面目なビジネスを非表示"]' + text + '[/spoiler]'
+            case "|DIALOGLOG|":
+                text = text.removeprefix("|DIALOGLOG|")
+                text = '[spoiler open="対話ログを表示" close="対話ログを非表示"]' + text + '[/spoiler]'
             case _:
                 raise Exception("Unhandled case:", text[0:11])
     body += text
@@ -117,7 +120,7 @@ def main():
         final_output["r"] = "少年と友達がゲームをする物語です。約8,000ページ。警告済みです。"
         page_list = []
 
-        translated = ["hsjp", "dz_act3", "dz_intermission", "dz_act4", "dz_act5act1", "a5a2_one", "a5a2_two", "a5a2_three"]
+        translated = ["hsjp", "dz_act3", "dz_intermission", "dz_act4", "dz_act5act1", "a5a2_one", "a5a2_two", "a5a2_three", "act6act1", "act6int1"]
         shouldbe = 1
         for tr in translated:
             with open(f'../translation/{tr}.json', 'r') as tr_json:
@@ -153,7 +156,7 @@ def main():
                         if pagenum == "005751" or pagenum == "005760":
                             body = body.replace("650x450", "650x1610")
                         elif pagenum == "006009":
-                            body = body.replace("650x450", "950x650")
+                            body = body.replace("650x450", "950x650").replace("04106", "cascade")
 # TODO: for the clocks (pages 3851 and 3860) it's 650 x 1610
 
                     else:
