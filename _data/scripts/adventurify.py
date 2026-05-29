@@ -4,7 +4,7 @@ import re
 
 dummypage = {
     "d": 1239537600000,
-    "c": "Boggle vacantly at these shenanigans.",
+    "c": "",
     "b": "It begins to dawn on you that everything you've done may be a colossal waste of time",
     "n": []
 }
@@ -64,6 +64,9 @@ def mediaformat(media, text, opentag, closetag):
             case "|DIALOGLOG|":
                 text = text.removeprefix("|DIALOGLOG|")
                 text = '[spoiler open="対話ログを表示" close="対話ログを非表示"]' + text + '[/spoiler]'
+            case "|TRKSTRLOGLOG|":
+                text = text.removeprefix("|TRKSTRLOGLOG|")
+                text = '[spoiler open="トリックスターログを表示" close="トリックスターログを非表示"]' + text + '[/spoiler]'
             case _:
                 raise Exception("Unhandled case:", text[0:11])
     body += text
