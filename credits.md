@@ -9,15 +9,11 @@ showBottomLinks: false
 ## 翻訳
 [Shizaya](https://x.com/shizayafanart)
 
-nygi
-
 [D_eadend_Z](https://privatter.net/u/D_eadend_Z)
 
-[9cgmnicenice208](https://privatter.net/u/9cgmnicenice208)
+9cgmnicenice208
 
 [HSJP Beta](https://mspfa.com/?s=41348&p=1)
-
-けどで～
 
 ---
 
@@ -34,6 +30,10 @@ GwyndolinOwO
 ## 感謝
 nygi
 
-LHuxlux
-
 TheSerpent
+
+[LHuxluxとHomestuck スペイン語訳](https://mspfa.com/?s=657&p=1)
+
+[Homestuck 繁体字中国語訳チーム](https://zhhomestuck.github.io/)
+
+[Homestuck ロシア語訳](https://www.mspaintadventures.ru/)
