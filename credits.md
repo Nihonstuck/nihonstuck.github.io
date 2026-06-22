@@ -37,3 +37,9 @@ TheSerpent
 [Homestuck 繁体字中国語訳チーム](https://zhhomestuck.github.io/)
 
 [Homestuck ロシア語訳](https://www.mspaintadventures.ru/)
+
+---
+
+## コライド翻訳手伝い
+
+[LHuxluxとHomestuck スペイン語訳](https://mspfa.com/?s=657&p=1)
