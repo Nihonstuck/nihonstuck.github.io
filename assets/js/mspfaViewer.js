@@ -7,8 +7,8 @@ window.RufflePlayer.config = {
     "autoplay": "on",
     "openUrlMode": "allow",
     "allowNetworking": "all",
-    "fontSources": ["/assets/NotoSansJP-VariableFont_wght.ttf"],
-    "defaultFonts": {NotoSansJP},
+    // "fontSources": [],
+    // "defaultFonts": {},
 };
 
 // MSPFA JS
