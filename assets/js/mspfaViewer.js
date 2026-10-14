@@ -362,6 +362,11 @@ const loadPage = () => {
     document.getElementById("headerDiv").style.display = "flex"
     // document.getElementById("headerDiv").style.display = "none"
     document.getElementById("headerImg").src = "/assets/images/header_cascade.gif"
+   } else if (p == 8087){
+    document.getElementById("cssSet").href = "/assets/css/collidestyle.css"
+    document.getElementById("headerDiv").style.display = "flex"
+    // document.getElementById("headerDiv").style.display = "none"
+    document.getElementById("headerImg").src = "/assets/images/collide_header.gif"
   } else {
     document.getElementById("cssSet").href = "/assets/css/uhcstyle.css"
     document.getElementById("headerDiv").style.display = "none"

@@ -133,3 +133,11 @@ ruffle-object {
 .spoiler.closed>div:last-child {
 	display: none;
 }
+
+#content img.storyPanel {
+    display: block;
+    flex-shrink: 0;
+    height: auto;
+    max-width: none;
+    margin: 0;
+}
