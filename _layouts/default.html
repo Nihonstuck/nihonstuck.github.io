@@ -18,17 +18,17 @@
 <script>
     window.RufflePlayer = window.RufflePlayer || {};
     window.RufflePlayer.config = {
-        // Fetches a standard vector font from a public CDN
-        fontSources: [
-            "assets/NotoSansJP-Regular.ttf"
-        ],
-        // Maps the standard Sans fallbacks used by the core text layout system
-        defaultFonts: {
-            sans: ["Noto Sans JP"],
-            serif: ["Noto Sans JP"],
-            typewriter: ["Noto Sans JP"]
-        }
-    };
+    // 1. Tell Ruffle to eagerly load your Japanese font asset
+      fontSources: [
+        "assets/NotoSansJP-Regular.ttf"
+    ],
+    // 2. Provide a multi-font array stack for each fallback category
+      defaultFonts: {
+        sans: ["Noto Sans JP", "Arial", "Helvetica", "sans-serif"],
+        serif: ["Noto Sans JP", "Times New Roman", "Times", "serif"],
+        typewriter: ["Noto Sans JP", "Courier New", "Courier", "monospace"]
+    }
+};
 </script>
 <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 <script src="/assets/js/password.js"></script>
