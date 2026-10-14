@@ -1,6 +1,6 @@
 // does this go here?
 window.RufflePlayer = window.RufflePlayer || {};
-window.RufflePlayer.config = {
+window.RufflePlayer.Gitonfig = {
     // Merge with any existing config, such as the user's extension config. Options you set below will have priority.
     ...window.RufflePlayer.config,
 

@@ -15,6 +15,21 @@
   {% endif %}
   <style id="adventureStyle"></style>
 </head>
+<script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.RufflePlayer.config = {
+        // Fetches a standard vector font from a public CDN
+        fontSources: [
+            "assets/NotoSansJP-Regular.ttf"
+        ],
+        // Maps the standard Sans fallbacks used by the core text layout system
+        defaultFonts: {
+            sans: ["Noto Sans JP"],
+            serif: ["Noto Sans JP"],
+            typewriter: ["Noto Sans JP"]
+        }
+    };
+</script>
 <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 <script src="/assets/js/password.js"></script>
 <body>
