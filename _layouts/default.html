@@ -15,21 +15,6 @@
   {% endif %}
   <style id="adventureStyle"></style>
 </head>
-<script>
-    window.RufflePlayer = window.RufflePlayer || {};
-    window.RufflePlayer.config = {
-    // 1. Tell Ruffle to eagerly load your Japanese font asset
-      fontSources: [
-        "assets/NotoSansJP-Regular.ttf"
-    ],
-    // 2. Provide a multi-font array stack for each fallback category
-      defaultFonts: {
-        sans: ["Noto Sans JP", "Arial", "Helvetica", "sans-serif"],
-        serif: ["Noto Sans JP", "Times New Roman", "Times", "serif"],
-        typewriter: ["Noto Sans JP", "Courier New", "Courier", "monospace"]
-    }
-};
-</script>
 <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 <script src="/assets/js/password.js"></script>
 <body>
