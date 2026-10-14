@@ -24,6 +24,10 @@ ruffle-object {
   margin: auto;
 }
 
+.homosuckNav {
+    display: none;
+}
+
 .sep {
   margin: 0 .3em; 
 }
