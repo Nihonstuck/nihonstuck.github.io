@@ -7,7 +7,7 @@ window.RufflePlayer.config = {
     "autoplay": "on",
     "openUrlMode": "allow",
     "allowNetworking": "all",
-    "fontSources": ["assets/NotoSansJP-VariableFont_wght.ttf"],
+    "fontSources": ["assets/NotoSansJP-Regular.ttf"],
     "defaultFonts": {
         sans: ["Noto Sans JP"],
         japaneseGothic: ["Noto Sans JP"],
