@@ -281,17 +281,10 @@ const loadPage = () => {
     return
   }
 
+  // Load given page
   loadIntoElement("command", MSPFA.parseBBCode(pageData.c))
   loadIntoElement("content", MSPFA.parseBBCode(pageData.b))
   loadIntoElement("links", genPageLinks(adventureData.p, pageData.n))
-
-  // Hide the command on selected pages
-  if (["6278", "7959"].includes(p)) {
-    document.getElementById("command").style.display = "none"
-  } else {
-    document.getElementById("command").style.display = ""
-  }
-
   if ("theme" in pageData) document.body.className = pageData.theme + " mspfa p" + p
 
   // Gen go back number
@@ -369,11 +362,11 @@ const loadPage = () => {
     document.getElementById("headerDiv").style.display = "flex"
     // document.getElementById("headerDiv").style.display = "none"
     document.getElementById("headerImg").src = "/assets/images/header_cascade.gif"
-  } else if (p == 8087){
-    document.getElementById("cssSet").href = "/assets/css/collidestyle.css"
-    document.getElementById("headerDiv").style.display = "flex"
+   // } else if (p == 8087){
+   // document.getElementById("cssSet").href = "/assets/css/collidestyle.css"
+   // document.getElementById("headerDiv").style.display = "flex"
     // document.getElementById("headerDiv").style.display = "none"
-    document.getElementById("headerImg").src = "/assets/images/collide_header.gif"
+   // document.getElementById("headerImg").src = "/assets/images/collide_header.gif"
   } else {
     document.getElementById("cssSet").href = "/assets/css/uhcstyle.css"
     document.getElementById("headerDiv").style.display = "none"
