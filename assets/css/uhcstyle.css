@@ -133,3 +133,18 @@ ruffle-object {
 .spoiler.closed>div:last-child {
 	display: none;
 }
+
+#content {
+    position: relative;
+    width: 100%;
+}
+
+#content img[src*="08082heal.png"],[src*="08100rings.png"],[src*="08101rings.png"],[src*="08102rings.png"],[src*="08103rings.png"],[src*="08104rings.png"],[src*="08105lilypad.png"],[src*="08106lilypad.png"],[src*="08107lilypad.png"],[src*="08108lilypad.png"],[src*="08109lilypad.png"],[src*="08110lilypad.png"],[src*="08111johndad.png"],[src*="08112johndad.png"],[src*="08113johndad.png"],[src*="08114johndad.png"],[src*="08115johndad.png"],[src*="08116johndad.png"],[src*="08117johndad.png"],[src*="08118johndad.png"],[src*="08119johndad.png"],[src*="08082heal.png"],[src*="08083heal.png"],[src*="08084heal.png"],[src*="08085heal.png"],[src*="08086heal.png"],[src*="08087heal.png"],[src*="08088mspaint.png"],[src*="08089mspaint.png"],[src*="08090mspaint.png"],[src*="08091mspaint.png"],[src*="08092mspaint.png"],[src*="08093mspaint.png"],[src*="08094ah.png"],[src*="08095ah.png"],[src*="08096ah.png"],[src*="08097ah.png"],[src*="08098ah.png"],[src*="08099ah.png"],
+#content embed [src*="07953_jp.swf"], [src*="A6A6I1.swf"]{    
+display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: none;
+}
