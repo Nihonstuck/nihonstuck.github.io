@@ -1,20 +1,25 @@
-// does this go here?
 window.RufflePlayer = window.RufflePlayer || {};
-window.RufflePlayer.Gitonfig = {
-    // Merge with any existing config, such as the user's extension config. Options you set below will have priority.
+window.RufflePlayer.config = {
     ...window.RufflePlayer.config,
 
     "autoplay": "on",
     "openUrlMode": "allow",
     "allowNetworking": "all",
-    "fontSources": ["assets/NotoSansJP-Regular.ttf"],
+    "fontSources": [
+        "/assets/font-swfs/NotoSansCJKTC.swf",   // swap for NotoSansJP.swf once built
+        "/assets/font-swfs/courier-new-pixel.swf",
+        "/assets/font-swfs/homestuck-fonts.swf"
+    ],
     "defaultFonts": {
-        sans: ["Noto Sans JP"],
-        japaneseGothic: ["Noto Sans JP"],
-        japaneseGothicMono: ["Noto Sans JP"],
-        japaneseMincho: ["Noto Sans JP"] 
-    }    
+        "sans": ["Noto Sans CJK TC Bold"],
+        "serif": ["Noto Sans CJK TC Bold"],
+        "typewriter": ["Noto Sans CJK TC Bold"],
+        "japaneseGothic": ["Noto Sans CJK TC Bold"],
+        "japaneseMincho": ["Noto Sans CJK TC Bold"],
+        "japaneseGothicMono": ["Noto Sans CJK TC Bold"]
+    }
 };
+
 
 // MSPFA JS
 window.MSPFA = {
