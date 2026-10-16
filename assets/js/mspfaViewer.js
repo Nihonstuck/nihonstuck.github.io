@@ -372,23 +372,23 @@ const loadPage = () => {
     // document.getElementById("headerDiv").style.display = "none"
     document.getElementById("headerImg").src = "/assets/images/header_cascade.gif"
   
-} else if (p == 8087) {
+  } else if (p == 8087) {
     document.getElementById("cssSet").href = "/assets/css/collidestyle.css";
     document.getElementById("headerDiv").style.display = "flex";
     document.getElementById("headerImg").src = "/assets/images/collide_header.gif";
 
-} else if (
+  } else if (
     (6243 < p && p < 6277) ||
     (6475 < p && p < 6530) ||
     (6853 < p && p < 6900) ||
     (6922 < p && p < 6943) ||
     (7409 < p && p < 7448)
-) {
+  ) {
     document.getElementById("cssSet").href = "/assets/css/homosuck.css";
     document.getElementById("headerDiv").style.display = "none";
     document.getElementById("headerImg").src = "";
 
-} else {
+  } else {
     document.getElementById("cssSet").href = "/assets/css/uhcstyle.css";
     document.getElementById("headerDiv").style.display = "none";
     document.getElementById("headerImg").src = "";
@@ -398,7 +398,7 @@ const loadPage = () => {
     // TODO: hussie alt text 
     // TODO: LE cool images
     //
-}
+
 
 const loadLog = () => {
   // Generate Log link list
