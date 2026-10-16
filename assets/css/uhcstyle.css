@@ -43,7 +43,10 @@ ruffle-object {
   margin: 0 9px; 
 }
 
-/* TODO: do the same as above for the faces in the footer */
+.footerFace {
+    content: url(/assets/images/bannerframe.png);
+    margin: 0 0;
+}
 
 .pageFrame {
   background: #c6c6c6;

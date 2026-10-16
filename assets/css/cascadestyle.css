@@ -15,10 +15,6 @@ body {
   background: #0e4603;
 }
 
-.homosuckNav {
-    display: none;
-}
-
 ruffle-object {
     margin: 0 -25px
 }
@@ -38,6 +34,10 @@ ruffle-object {
   font-weight: 700;
   color: white;
   margin: auto;
+}
+
+.homosuckNav {
+    display: none;
 }
 
 .sep {

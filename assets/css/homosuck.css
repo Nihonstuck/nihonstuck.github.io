@@ -39,11 +39,11 @@ a {
 }
 
 
-.navList a:nth-child(n+0):nth-child(-n+1) { color: #fff }
-.navList a:nth-child(n+2):nth-child(-n+4) { color: #fff; }
-.navList a:nth-child(n+5):nth-child(-n+9) { color: #fff; }
-.navList a:nth-child(n+10):nth-child(-n+13) { color: #fff; }
-.navList a:nth-child(n+13) { color: #fff; }
+.navList a:nth-child(n+0):nth-child(-n+1) { color: #2ed73a }
+.navList a:nth-child(n+2):nth-child(-n+4) { color: #2ed73a; }
+.navList a:nth-child(n+5):nth-child(-n+9) { color: #2ed73a; }
+.navList a:nth-child(n+10):nth-child(-n+13) { color: #2ed73a; }
+.navList a:nth-child(n+13) { color: #2ed73a; }
 
 .sep {
   margin: 0 .3em; 
