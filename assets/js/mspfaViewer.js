@@ -2,14 +2,12 @@ window.RufflePlayer = window.RufflePlayer || {};
 window.RufflePlayer.config = {
     ...window.RufflePlayer.config,
 
+    allowScriptAccess: true,
     "autoplay": "on",
     "openUrlMode": "allow",
     "allowNetworking": "all",
-    "allowScriptAccess": "true",
     "fontSources": [
-        "/assets/font-swfs/NotoSansCJKTC.swf",   // swap for NotoSansJP.swf once built
-        "/assets/font-swfs/courier-new-pixel.swf",
-        "/assets/font-swfs/homestuck-fonts.swf"
+        "/assets/font-swfs/NotoSansCJKTC.swf"   // swap for NotoSansJP.swf once built
     ],
     "defaultFonts": {
         "sans": ["Noto Sans CJK TC Bold"],
@@ -376,13 +374,17 @@ const loadPage = () => {
     document.getElementById("cssSet").href = "/assets/css/collidestyle.css";
     document.getElementById("headerDiv").style.display = "flex";
     document.getElementById("headerImg").src = "/assets/images/collide_header.gif";
+  } else if (p == 8127) {
+    document.getElementById("cssSet").href = "/assets/css/act7style.css";
+    document.getElementById("headerDiv").style.display = "flex";
+    document.getElementById("headerImg").src = "/assets/images/act7_header.gif";
 
   } else if (
     (6243 < p && p < 6277) ||
     (6475 < p && p < 6530) ||
     (6853 < p && p < 6900) ||
     (6922 < p && p < 6943) ||
-    (7409 < p && p < 7448)
+    (7408 < p && p < 7448)
   ) {
     document.getElementById("cssSet").href = "/assets/css/homosuck.css";
     document.getElementById("headerDiv").style.display = "none";
