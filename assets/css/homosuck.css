@@ -55,7 +55,7 @@ a {
 }
 
  /* TODO: */
-.bannerImage {
+.footerFace .bannerImage {
     content: url("/assets/images/mspalogo_caliborn.png");
     margin: 0 0;
 }

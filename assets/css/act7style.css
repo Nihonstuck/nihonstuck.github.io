@@ -60,10 +60,6 @@ ruffle-object {
 }
 
 /* TODO: do the same as above for the faces in the footer */
-.bannerImage {
-    content: url(/assets/images/mspalogo_mspa.png);
-    margin: 0 0;
-}
 
 .pageFrame {
   background: #dbdbdb;

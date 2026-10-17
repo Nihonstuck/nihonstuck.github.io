@@ -50,7 +50,7 @@ a {
 }
 
  /* TODO: */
-.bannerImage {
+.footerFace .bannerImage {
     content: url("/assets/images/mspalogo_scratch.png");
     margin: 0 0;
 }
