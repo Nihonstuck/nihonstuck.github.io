@@ -50,8 +50,8 @@ a {
 }
 
  /* TODO: */
-.footerFace {
-    content: url(/assets/images/idk.png);
+.footerFace .bannerImage {
+    content: url("/assets/images/mspalogo_scratch.png");
     margin: 0 0;
 }
 

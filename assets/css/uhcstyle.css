@@ -43,8 +43,8 @@ ruffle-object {
   margin: 0 9px; 
 }
 
-.footerFace {
-    content: url(/assets/images/bannerframe.png);
+.footerFace .bannerImage {
+    content: url(/assets/images/mspalogo_mspa.png);
     margin: 0 0;
 }
 
