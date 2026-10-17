@@ -43,7 +43,7 @@ ruffle-object {
   margin: 0 9px; 
 }
 
-.footerFace .bannerImage {
+.bannerImage {
     content: url(/assets/images/mspalogo_mspa.png);
     margin: 0 0;
 }
