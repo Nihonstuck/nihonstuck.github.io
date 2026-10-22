@@ -380,10 +380,10 @@ const loadPage = () => {
     document.getElementById("headerImg").src = "/assets/images/act7_header.gif";
 
   } else if (
-    (6243 < p && p < 6277) ||
-    (6475 < p && p < 6530) ||
-    (6853 < p && p < 6900) ||
-    (6922 < p && p < 6943) ||
+    (6242 < p && p < 6277) ||
+    (6474 < p && p < 6530) ||
+    (6852 < p && p < 6900) ||
+    (6921 < p && p < 6943) ||
     (7408 < p && p < 7448)
   ) {
     document.getElementById("cssSet").href = "/assets/css/homosuck.css";

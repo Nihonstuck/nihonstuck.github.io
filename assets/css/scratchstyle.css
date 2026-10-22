@@ -180,3 +180,26 @@ a {
 .spoiler.closed>div:last-child {
 	display: none;
 }
+
+.imageTooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltipImage {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.tooltipImage img {
+  max-width: 200px;
+  height: auto;
+}
+
+.imageTooltip:hover .tooltipImage {
+  display: block;
+}
