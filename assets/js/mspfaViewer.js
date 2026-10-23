@@ -352,7 +352,7 @@ if (p < 3797) {
     temp = p - 3964;
     headerImg.src = filegarden + "room" + temp + ".gif";
 }
-
+console.log("Page:", p, "Header:", headerImg.src);
     // Remove any previously created image tooltip
     let oldTooltip = document.getElementById("headerTooltipImage");
     if (oldTooltip) {
