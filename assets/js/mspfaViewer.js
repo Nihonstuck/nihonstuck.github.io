@@ -331,7 +331,10 @@ const loadPage = () => {
         document.getElementById("headerImg").src = filegarden + "room87.gif"
     } else if (p >= 4052) {
         temp = p - 3964 // 4052 --> room88.png
-    } else {
+        pString = temp.toString()
+        document.getElementById("headerImg").src = filegarden + "room" + pString + ".gif"
+
+     } else {
         pString = ""
         switch (p) {
             case 3874:
