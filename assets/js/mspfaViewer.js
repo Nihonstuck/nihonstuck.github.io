@@ -396,79 +396,8 @@ const loadPage = () => {
     document.getElementById("headerDiv").style.display = "none";
     document.getElementById("headerImg").src = "";
 }
-}
-console.log("Page:", p, "Header:", headerImg.src);
-    // Remove any previously created image tooltip
-    let oldTooltip = document.getElementById("headerTooltipImage");
-    if (oldTooltip) {
-        oldTooltip.remove();
-    }
+};
 
-    // Remove the native title unless this page needs a text tooltip
-    headerImg.removeAttribute("title");
-    headerImg.onmouseenter = null;
-    headerImg.onmouseleave = null;
-    headerImg.onmousemove = null;
-
-    // Text tooltips for pages 4056–4075
-    const pageTitles = {
-      4056: "イェーイ！",
-      4057: "...なんだこりゃ？",
-      4058: "ああ嫌だ。先祖の話だよな。",
-      4059: "あの野郎は女の子を変な部屋に閉じ込まさせて、トロール先祖の話をぺちゃぺちゃいいやがっているな。間違いなくそうだろ。",
-      4060: "俺のマンガに載せるな",
-      4061: "ああ、しまった。ここは思っていたより広いな。どっちへ行ったのか分かる？みんな、助けて。",
-      4062: "きっとあいつはこのドアの後ろにいる。聞こえるか、スクラッチ？！終わりだぞ！",
-      4063: "は！捕まえった、この野郎！お前のトロール同人誌を俺のストーリーを台無しにするのはやめｔアアアアアアアアアアアアアアアアアアアア",
-      4064: "間違ったドアだ。",
-      4065: "ここが正解のようだ。廊下は丸くてクソみたいだ。まるで彼の馬鹿げた大きな頭みたいだ。",
-      4066: "俺の美しいコマ！あいつ何をしたんだ！このクソ野郎。これを片付けるには何太陽周期もかかるだろ。本当に何太陽周期も。",
-      4067: "Tちくしょう、奴はこんなものがいっぱい入ったボウルを持ってるんだぜ？俺の小さな矢印を嘲笑うために、あの馬鹿げたキャンディーボウルのスタントをやってるんだな。最高のホストか、クソッタレ。",
-      4068: "ウワーーーーーッアアアッウアガ！ （フリップ）",
-      4069: "ああ、なんてことだ、どうしてこんなに美味しいんだろう？",
-      4070: "うわ、これは控えめにした方がいい。後で必要になるかもしれないから。",
-      4071: "見付かった。さあ、話を続けろ、キューボールめ。俺の箒の穂先で狙ってる。この傲慢な野郎、捕まえてやる。",
-      4072: "チック。タック。チック。タック。チック。タック。獲物に近づくにつれ、心臓の鼓動は時計のリズムと一致する。何もかも放っておかない。だって、あれは最も危険な獲物、サスペンダーをつけた身長120センチのクソ野郎で、黙るつもりはないんだから。待ってろ、ハッシー。待ってろよ…",
-      4073: "ウワーーーーーッアアアッウアガ！ （トリップ）",
-      4074: "ばんばんばんばんばんばんばんばんばんばんばんばんばんばんばんばんばん",
-      4075: "みんな、お前の見下した自己満足的な語り口にうんざりしてる。俺の少し見下した感じ、少し自己満足的な語り口に戻りたがっている。"
-    };
-    if (p >= 4056 && p <= 4075) {
-        headerImg.title = pageTitles[p];
-    }
-
-    // Image tooltips for pages 4076–4081
-    if (p >= 4076 && p <= 4081) {
-        let tooltipNum = p - 4075;
-        let tooltipImg = document.createElement("img");
-
-        tooltipImg.id = "headerTooltipImage";
-        tooltipImg.src =
-            "https://file.garden/aOgKdPFhxWt7Kb9m/storyfiles/hs2/scraps/LEtext"
-            + tooltipNum + ".gif";
-
-        Object.assign(tooltipImg.style, {
-            display: "none",
-            position: "fixed",
-            zIndex: "9999",
-            maxWidth: "none",
-            pointerEvents: "none"
-        });
-    }
-         document.body.appendChild(tooltipImg);
-
-        headerImg.onmouseenter = function () {
-            tooltipImg.style.display = "block";
-        };
-
-        headerImg.onmouseleave = function () {
-            tooltipImg.style.display = "none";
-        };
-
-        headerImg.onmousemove = function (event) {
-            tooltipImg.style.left = (event.clientX + 15) + "px";
-            tooltipImg.style.top = (event.clientY + 15) + "px";
-        };
     // TODO: hussie alt text 
     // TODO: LE cool images
     //
