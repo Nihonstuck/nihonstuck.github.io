@@ -396,6 +396,7 @@ const loadPage = () => {
     document.getElementById("headerDiv").style.display = "none";
     document.getElementById("headerImg").src = "";
 }
+}
 console.log("Page:", p, "Header:", headerImg.src);
     // Remove any previously created image tooltip
     let oldTooltip = document.getElementById("headerTooltipImage");
