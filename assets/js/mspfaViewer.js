@@ -315,24 +315,90 @@ const loadPage = () => {
     // p4082 is temporarily SBaHJ
     // 3797 is when the ROOMS start changing (room02)
   if (!isNaN(p) && 3764 <= p && p <= 4081) {
-    filegarden = "https://file.garden/aOgKdPFhxWt7Kb9m/storyfiles/hs2/scratch/"
-    document.getElementById("cssSet").href = "/assets/css/scratchstyle.css"
-    document.getElementById("headerDiv").style.display = "flex"
+    filegarden = "https://file.garden/aOgKdPFhxWt7Kb9m/storyfiles/hs2/scratch/";
+    document.getElementById("cssSet").href = "/assets/css/scratchstyle.css";
+    document.getElementById("headerDiv").style.display = "flex";
+
+    let headerImg = document.getElementById("headerImg");
+    let headerTitle = "";
+
     if (p < 3797) {
-        document.getElementById("headerImg").src = filegarden + "room.gif"
+        headerImg.src = filegarden + "room.gif";
     } else if (p <= 3874) {
-        temp = p - 3795 // 3797 --> room02.png
-        pString = temp.toString()
-        if (pString.length == 1) { pString = "0" + pString }
-        document.getElementById("headerImg").src = filegarden + "room" + pString + ".gif"
+        temp = p - 3795;
+        pString = temp.toString();
+        if (pString.length == 1) { pString = "0" + pString; }
+        headerImg.src = filegarden + "room" + pString + ".gif";
     } else if (p == 4036) {
-        document.getElementById("headerImg").src = filegarden + "room86.gif"
+        headerImg.src = filegarden + "room86.gif";
     } else if (4036 < p && p < 4052) {
-        document.getElementById("headerImg").src = filegarden + "room87.gif"
+        headerImg.src = filegarden + "room87.gif";
     } else if (p >= 4052) {
-        temp = p - 3964 // 4052 --> room88.png
-        pString = temp.toString()
-        document.getElementById("headerImg").src = filegarden + "room" + pString + ".gif"
+        temp = p - 3964;
+        pString = temp.toString();
+        if (pString.length == 1) { pString = "0" + pString; }
+        headerImg.src = filegarden + "room" + pString + ".gif";
+    }
+
+    // Text tooltips for pages 4056–4075
+    const pageTitles = {
+        4056: "イェーイ！",
+        4057: "...なんだこりゃ？",
+        4058: "ああ嫌だ。先祖の話だよな。",
+        4059: "ああ嫌だ。先祖の話だよな。",
+        4060: "俺のマンガに載せるな",
+        4061: "ああ、しまった。ここは思っていたより広いな。どっちへ行ったのか分かる？みんな、助けて。",
+        4062: "きっとあいつはこのドアの後ろにいる。聞こえるか、スクラッチ？！終わりだぞ！",
+        4063: "は！捕まえった、この野郎！お前のトロール同人誌を俺のストーリーを台無しにするのはやめｔアアアアアアアアアアアアアアアアアアアア",
+        4064: "間違ったドアだ。",
+        4065: "ここが正解のようだ。廊下は丸くてクソみたいだ。まるで彼の馬鹿げた大きな頭みたいだ。",
+        4066: "俺の美しいコマ！あいつ何をしたんだ！このクソ野郎。これを片付けるには何太陽周期もかかるだろ。本当に何太陽周期も。",
+        4067: "Tちくしょう、奴はこんなものがいっぱい入ったボウルを持ってるんだぜ？俺の小さな矢印を嘲笑うために、あの馬鹿げたキャンディーボウルのスタントをやってるんだな。最高のホストか、クソッタレ。",
+        4068: "ウワーーーーーッアアアッウアガ！ （フリップ）",
+        4069: "ああ、なんてことだ、どうしてこんなに美味しいんだろう？",
+        4070: "うわ、これは控えめにした方がいい。後で必要になるかもしれないから。",
+        4071: "見付かった。さあ、話を続けろ、キューボールめ。俺の箒の穂先で狙ってる。この傲慢な野郎、捕まえてやる。",
+        4072: "チック。タック。チック。タック。チック。タック。獲物に近づくにつれ、心臓の鼓動は時計のリズムと一致する。何もかも放っておかない。だって、あれは最も危険な獲物、サスペンダーをつけた身長120センチのクソ野郎で、黙るつもりはないんだから。待ってろ、ハッシー。待ってろよ…",
+        4073: "ウワーーーーーッアアアッウアガ！ （トリップ）",
+        4074: "ばんばんばんばんばんばんばんばんばんばんばんばんばんばんばんばんばん",
+        4075: "みんな、お前の見下した自己満足的な語り口にうんざりしてる。俺の少し見下した感じ、少し自己満足的な語り口に戻りたがっている。"
+    };
+
+    if (p >= 4056 && p <= 4075) {
+        headerImg.title = pageTitles[p];
+    } else {
+        headerImg.removeAttribute("title");
+    }
+
+    // Tooltip images for pages 4076–4081
+    let oldTooltip = document.getElementById("headerTooltipImage");
+    if (oldTooltip) oldTooltip.remove();
+
+    if (p >= 4076 && p <= 4081) {
+        let tooltipNum = p - 4075;
+
+        let tooltipImg = document.createElement("img");
+        tooltipImg.id = "headerTooltipImage";
+        tooltipImg.src =
+            "https://file.garden/aOgKdPFhxWt7Kb9m/storyfiles/hs2/scraps/LEtext"
+            + tooltipNum + ".gif";
+
+        tooltipImg.style.display = "none";
+        tooltipImg.style.position = "absolute";
+        tooltipImg.style.zIndex = "9999";
+        tooltipImg.style.maxWidth = "none";
+        tooltipImg.style.pointerEvents = "none";
+
+        headerImg.parentElement.style.position = "relative";
+        headerImg.parentElement.appendChild(tooltipImg);
+
+        headerImg.addEventListener("mouseenter", function showTooltip() {
+            tooltipImg.style.display = "block";
+        });
+
+        headerImg.addEventListener("mouseleave", function hideTooltip() {
+            tooltipImg.style.display = "none";
+        });
     } else {
         pString = ""
         switch (p) {
