@@ -321,46 +321,37 @@ const loadPage = () => {
 
     let headerImg = document.getElementById("headerImg");
 
-        // Header image logic
-    if (p < 3797) {
-        headerImg.src = filegarden + "room.gif";
+   // Header image logic
+if (p < 3797) {
+    headerImg.src = filegarden + "room.gif";
 
-    } else if (p <= 3874) {
-        temp = p - 3795;
-        pString = temp.toString();
-        if (pString.length == 1) pString = "0" + pString;
-        headerImg.src = filegarden + "room" + pString + ".gif";
+} else if (p <= 3874) {
+    temp = p - 3795;
+    pString = temp.toString().padStart(2, "0");
+    headerImg.src = filegarden + "room" + pString + ".gif";
 
-    } else if (p <= 4035) {
-        pString = "";
+} else if (p <= 4035) {
+    let roomNumber = 80;
 
-        switch (p) {
-            case 3895: pString = "81"; break;
-            case 3936: pString = "82"; break;
-            case 3974: pString = "83"; break;
-            case 4002: pString = "84"; break;
-        }
+    if (p === 3874) roomNumber = 79;
+    else if (p === 3895) roomNumber = 81;
+    else if (p === 3936) roomNumber = 82;
+    else if (p === 3974) roomNumber = 83;
+    else if (p === 4002) roomNumber = 84;
+    else if (p > 4002) roomNumber = 85;
 
-        if (4002 < p && p < 4036) {
-            pString = "85";
-        } else if (pString === "") {
-            pString = "80";
-        }
+    headerImg.src = filegarden + "room" + roomNumber + ".gif";
 
-        headerImg.src = filegarden + "room" + pString + ".gif";
+} else if (p === 4036) {
+    headerImg.src = filegarden + "room86.gif";
 
-    } else if (p == 4036) {
-        headerImg.src = filegarden + "room86.gif";
+} else if (p < 4052) {
+    headerImg.src = filegarden + "room87.gif";
 
-    } else if (p < 4052) {
-        headerImg.src = filegarden + "room87.gif";
-
-    } else {
-        temp = p - 3964;
-        pString = temp.toString();
-        if (pString.length == 1) pString = "0" + pString;
-        headerImg.src = filegarden + "room" + pString + ".gif";
-    }
+} else {
+    temp = p - 3964;
+    headerImg.src = filegarden + "room" + temp + ".gif";
+}
 
     // Remove any previously created image tooltip
     let oldTooltip = document.getElementById("headerTooltipImage");
