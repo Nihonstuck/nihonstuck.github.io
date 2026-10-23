@@ -320,32 +320,66 @@ const loadPage = () => {
     document.getElementById("headerDiv").style.display = "flex";
 
     let headerImg = document.getElementById("headerImg");
-    let headerTitle = "";
 
+        // Header image logic
     if (p < 3797) {
         headerImg.src = filegarden + "room.gif";
+
     } else if (p <= 3874) {
         temp = p - 3795;
         pString = temp.toString();
-        if (pString.length == 1) { pString = "0" + pString; }
+        if (pString.length == 1) pString = "0" + pString;
         headerImg.src = filegarden + "room" + pString + ".gif";
+
+    } else if (p <= 4035) {
+        pString = "";
+
+        switch (p) {
+            case 3895: pString = "81"; break;
+            case 3936: pString = "82"; break;
+            case 3974: pString = "83"; break;
+            case 4002: pString = "84"; break;
+        }
+
+        if (4002 < p && p < 4036) {
+            pString = "85";
+        } else if (pString === "") {
+            pString = "80";
+        }
+
+        headerImg.src = filegarden + "room" + pString + ".gif";
+
     } else if (p == 4036) {
         headerImg.src = filegarden + "room86.gif";
-    } else if (4036 < p && p < 4052) {
+
+    } else if (p < 4052) {
         headerImg.src = filegarden + "room87.gif";
-    } else if (p >= 4052) {
+
+    } else {
         temp = p - 3964;
         pString = temp.toString();
-        if (pString.length == 1) { pString = "0" + pString; }
+        if (pString.length == 1) pString = "0" + pString;
         headerImg.src = filegarden + "room" + pString + ".gif";
     }
+
+    // Remove any previously created image tooltip
+    let oldTooltip = document.getElementById("headerTooltipImage");
+    if (oldTooltip) {
+        oldTooltip.remove();
+    }
+
+    // Remove the native title unless this page needs a text tooltip
+    headerImg.removeAttribute("title");
+    headerImg.onmouseenter = null;
+    headerImg.onmouseleave = null;
+    headerImg.onmousemove = null;
 
     // Text tooltips for pages 4056–4075
     const pageTitles = {
         4056: "イェーイ！",
         4057: "...なんだこりゃ？",
         4058: "ああ嫌だ。先祖の話だよな。",
-        4059: "ああ嫌だ。先祖の話だよな。",
+        4059: "あの野郎は女の子を変な部屋に閉じ込まさせて、トロール先祖の話をぺちゃぺちゃいいやがっているな。間違いなくそうだろ。",
         4060: "俺のマンガに載せるな",
         4061: "ああ、しまった。ここは思っていたより広いな。どっちへ行ったのか分かる？みんな、助けて。",
         4062: "きっとあいつはこのドアの後ろにいる。聞こえるか、スクラッチ？！終わりだぞ！",
@@ -366,39 +400,40 @@ const loadPage = () => {
 
     if (p >= 4056 && p <= 4075) {
         headerImg.title = pageTitles[p];
-    } else {
-        headerImg.removeAttribute("title");
     }
 
-    // Tooltip images for pages 4076–4081
-    let oldTooltip = document.getElementById("headerTooltipImage");
-    if (oldTooltip) oldTooltip.remove();
-
+    // Image tooltips for pages 4076–4081
     if (p >= 4076 && p <= 4081) {
         let tooltipNum = p - 4075;
-
         let tooltipImg = document.createElement("img");
+
         tooltipImg.id = "headerTooltipImage";
         tooltipImg.src =
             "https://file.garden/aOgKdPFhxWt7Kb9m/storyfiles/hs2/scraps/LEtext"
             + tooltipNum + ".gif";
 
-        tooltipImg.style.display = "none";
-        tooltipImg.style.position = "absolute";
-        tooltipImg.style.zIndex = "9999";
-        tooltipImg.style.maxWidth = "none";
-        tooltipImg.style.pointerEvents = "none";
+        Object.assign(tooltipImg.style, {
+            display: "none",
+            position: "fixed",
+            zIndex: "9999",
+            maxWidth: "none",
+            pointerEvents: "none"
+        });
 
-        headerImg.parentElement.style.position = "relative";
-        headerImg.parentElement.appendChild(tooltipImg);
+        document.body.appendChild(tooltipImg);
 
-        headerImg.addEventListener("mouseenter", function showTooltip() {
+        headerImg.onmouseenter = function () {
             tooltipImg.style.display = "block";
-        });
+        };
 
-        headerImg.addEventListener("mouseleave", function hideTooltip() {
+        headerImg.onmouseleave = function () {
             tooltipImg.style.display = "none";
-        });
+        };
+
+        headerImg.onmousemove = function (event) {
+            tooltipImg.style.left = (event.clientX + 15) + "px";
+            tooltipImg.style.top = (event.clientY + 15) + "px";
+        };
     } else {
         pString = ""
         switch (p) {
