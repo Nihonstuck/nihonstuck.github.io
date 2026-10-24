@@ -121,19 +121,17 @@ ruffle-object {
 #content object,
 #content ruffle-object {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
 }
 
 /* #content img { */
 /*   margin: 0 -25px; */
 /* } */
 #content img.storyPanel {
-    display: block;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
+    margin: 0 -25px;
 }
 
 #links {
