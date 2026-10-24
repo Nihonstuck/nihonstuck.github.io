@@ -392,7 +392,8 @@ const loadPage = () => {
     document.getElementById("headerImg").src = "";
   
   } else if (
-    (8088 < p && p < 8127)
+    (8088 < p && p < 8127) ||
+    (p == 7959)
   ) {
     document.getElementById("cssSet").href = "/assets/css/bigstyle.css";
     document.getElementById("headerDiv").style.display = "none";
