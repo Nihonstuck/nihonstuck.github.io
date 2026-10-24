@@ -392,9 +392,20 @@ const loadPage = () => {
     document.getElementById("headerImg").src = "";
   
   } else if (
-    (8088 < p && p < 8127) ||
-    (p == 7959)
-    (p == 6901)
+    (p == 5780) ||
+    (p == 6382) ||
+    (6383 < p && p < 6387) ||
+    (6387 < p && p < 6392) ||
+    (p == 6397) ||
+    (6400 < p && p < 6402) ||
+    (p == 6405) ||
+    (6408 < p && p < 6411) ||
+    (6414 < p && p < 6420) ||
+    (6437 < p && p < 6440) ||
+    (p == 6901) ||
+    (p == 7959) ||
+    (8088 < p && p < 8127) 
+     
   ) {
     document.getElementById("cssSet").href = "/assets/css/bigstyle.css";
     document.getElementById("headerDiv").style.display = "none";
