@@ -390,12 +390,13 @@ const loadPage = () => {
     document.getElementById("cssSet").href = "/assets/css/homosuck.css";
     document.getElementById("headerDiv").style.display = "none";
     document.getElementById("headerImg").src = "";
-
-  } else {
-    document.getElementById("cssSet").href = "/assets/css/uhcstyle.css";
+  
+  } else if (
+    (8088 < p && p < 8127)
+    document.getElementById("cssSet").href = "/assets/css/bigstyle.css";
     document.getElementById("headerDiv").style.display = "none";
     document.getElementById("headerImg").src = "";
-}
+  )
 };
 
     // TODO: hussie alt text 
