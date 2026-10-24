@@ -394,6 +394,7 @@ const loadPage = () => {
   } else if (
     (8088 < p && p < 8127) ||
     (p == 7959)
+    (p == 6901)
   ) {
     document.getElementById("cssSet").href = "/assets/css/bigstyle.css";
     document.getElementById("headerDiv").style.display = "none";
