@@ -82,7 +82,8 @@ ruffle-object {
 }
 
 .story-text {
-    /* max-width: 650px; */
+    width: 100%;
+    max-width: 650px;
 }
 
 .footer {
@@ -108,27 +109,41 @@ ruffle-object {
 }
 
 #content {
-  padding: 0 25px;
-  line-height: 1.15;
-  margin: 0 0 30px 0;
-  font-size: 14px;
-  text-align: center;
-  color: red;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 25px;
+    text-align: center;
+}
+
+#content img,
+#content iframe,
+#content embed,
+#content object,
+#content ruffle-object {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* #content img { */
 /*   margin: 0 -25px; */
 /* } */
-.storyPanel {
-  margin: 0 -25px;
+#content img.storyPanel {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
 }
 
 #links {
-  font-family: Verdana,Arial,Helvetica,sans-serif;
-  font-size: x-large;
-  font-weight: 400;
-  /* margin: 0 25px 30px; */
-  margin: 0 175px 30px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    font-weight: 400;
+    margin: 0 25px 30px;
+    text-align: left;
+    align-self: stretch;
+    box-sizing: border-box;
 }
 
 #links > span > div::before {
