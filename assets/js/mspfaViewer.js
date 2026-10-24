@@ -401,7 +401,8 @@ const loadPage = () => {
     document.getElementById("cssSet").href = "/assets/css/uhcstyle.css";
     document.getElementById("headerDiv").style.display = "none";
     document.getElementById("headerImg").src = "";
-};
+  }
+  };
 
     // TODO: hussie alt text 
     // TODO: LE cool images
