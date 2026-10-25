@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <title>ホームスタック</title>
+
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+
+  <!-- <link rel="stylesheet" href="/assets/css/{{ page.cssStyle }}.css"> -->
+  <link id="cssSet" rel="stylesheet" href="/assets/css/homosuck.css">
+  <!-- <link rel="stylesheet" href="/assets/css/scratchstyle.css"> -->
+  {% if page.hasViewer == true %}
+  <!-- <script src="https://flaringk.github.io/mspfaViewer/mspfaViewer.js"></script> -->
+  <script src="/assets/js/mspfaViewer.js"></script>
+  {% endif %}
+  <style id="adventureStyle"></style>
+</head>
+<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+<script src="/assets/js/password.js"></script>
+<body>
+  <div class="main">
+    <div class="pageBody">
+      <div class="header" id="headerDiv" style="width: 950px; display: none;">
+        <img id="headerImg" src="" style="width: 950px;">
+      </div>
+      {% if page.showNavBar == true %}
+      {% include navigation.html %}
+      {% endif %}
+      <div class="pageFrame">
+        <div class="pageContent">
+          <div class="story-text">
+            <div id="command">{{ page.command }}</div>
+            <div id="content">{{ content }}</div>
+            <div id="links"></div>
+
+            {% if page.showBottomLinks == true %}
+            <div class="bottomLinks"> 
+              <a id="startover" href="?p=1">初めからやり直す</a> 
+              <span id="gobackbar"> | </span> 
+              <a id="goback">戻る</a> 
+            </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+      <div class="footer " style="width: 950px;">
+        <a href="/"><img src="/assets/images/mspalogo_caliborn.png" alt="" draggable="false" class="bannerImage left"></a>
+        <a href="/"><img src="/assets/images/mspalogo_caliborn.png" alt="" draggable="false" class="bannerImage right"></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="prelaod" style="display: none;"></div>
+</body>
+</html>

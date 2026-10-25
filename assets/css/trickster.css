@@ -1,7 +1,12 @@
 body {
   /* background: #5a5a5a; */
-  background: #000;
+  background-image: url("./trickster_sitegraphics/images/Z2.jpg");
   margin: 0;
+  font-size: 14px;
+  color: #f9fd6b;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
   font-family: 'Courier New', Courier, monospace;
 }
 
@@ -52,7 +57,10 @@ a {
 
 .pageFrame {
   /* background: #c6c6c6; */
-  background: #082a00;
+  background-image: url("./trickster_sitegraphics/images/bluetile.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: space repeat;
   width: 950px;
   padding-top: 7px;
   padding-bottom: 23px;
@@ -77,7 +85,7 @@ a {
 
 .pageContent {
   /* background: #eee; */
-  background: #0e4603;
+  background: #ff73fd;
   max-width: 950px;
   width: 650px;
   display: flex;
@@ -100,7 +108,7 @@ a {
   justify-content: space-between;
   align-items: center;
   margin: auto;
-  background: #0e4603;
+  background: #ff73fd;
 }
 
 
@@ -112,7 +120,7 @@ a {
   justify-content: space-between;
   align-items: center;
   margin: auto;
-  background: #0e4603;
+  background: #ff73fd;
 }
 
 #command {
@@ -122,7 +130,7 @@ a {
   padding: 15px 0;
   max-width: 590px;
   margin: 0 auto;
-  color: white;
+  color: #f9fd6b;
 }
 
 #content {
@@ -131,7 +139,7 @@ a {
   margin: 0 0 30px 0;
   font-size: 14px;
   text-align: center;
-  color: white;
+  color: #f9fd6b;
 }
 
 /* #content img { */
@@ -150,14 +158,14 @@ a {
 
 #links > span > div::before {
   content: "> ";
-  color: white;
+  color: #fb060b;
 }
 
 .bottomLinks {
   font-size: 10px;
   font-family: Verdana,Arial,Helvetica,sans-serif;
   padding: 0 25px 10px;
-  color: white;
+  color: #fb060b;
 }
 
 .spoiler {
