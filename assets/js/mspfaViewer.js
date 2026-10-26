@@ -1,14 +1,348 @@
+window.RufflePlayer = window.RufflePlayer || {};
+window.RufflePlayer.config = {
+    ...window.RufflePlayer.config,
+
+    allowScriptAccess: true,
+    "autoplay": "on",
+    "openUrlMode": "allow",
+    "allowNetworking": "all",
+    "fontSources": [
+        "/assets/font-swfs/NotoSansCJKTC.swf"   // swap for NotoSansJP.swf once built
+    ],
+    "defaultFonts": {
+        "sans": ["Noto Sans CJK TC Bold"],
+        "serif": ["Noto Sans CJK TC Bold"],
+        "typewriter": ["Noto Sans CJK TC Bold"],
+        "japaneseGothic": ["Noto Sans CJK TC Bold"],
+        "japaneseMincho": ["Noto Sans CJK TC Bold"],
+        "japaneseGothicMono": ["Noto Sans CJK TC Bold"]
+    }
+};
+
+
+// MSPFA JS
+window.MSPFA = {
+  BBC: [
+    [/  /g, "&nbsp;&nbsp;"],
+    [/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;"],
+    [/\r?\n/g, "<br>"],
+    [/\[b\]((?:(?!\[b\]).)*?)\[\/b\]/gi, "<span style=\"font-weight: bolder;\">$1</span>"],
+    [/\[i\]((?:(?!\[i\]).)*?)\[\/i\]/gi, "<span style=\"font-style: italic;\">$1</span>"],
+    [/\[u\]((?:(?!\[u\]).)*?)\[\/u\]/gi, "<span style=\"text-decoration: underline;\">$1</span>"],
+    [/\[s\]((?:(?!\[s\]).)*?)\[\/s\]/gi, "<span style=\"text-decoration: line-through;\">$1</span>"],
+    [/\[size=(\d*?)\]((?:(?!\[size=(?:\d*?)\]).)*?)\[\/size\]/gi, "<span style=\"font-size: $1px;\">$2</span>"],
+    [/\[color=("?)#?([a-f0-9]{3}(?:[a-f0-9]{3})?)\1\]((?:(?!\[color(?:=[^;]*?)\]).)*?)\[\/color\]/gi, "<span style=\"color: #$2;\">$3</span>"],
+    [/\[color=("?)([^";]+?)\1\]((?:(?!\[color(?:=[^;]*?)\]).)*?)\[\/color\]/gi, "<span style=\"color: $2;\">$3</span>"],
+    [/\[background=("?)#?([a-f0-9]{3}(?:[a-f0-9]{3})?)\1\]((?:(?!\[background(?:=[^;]*?)\]).)*?)\[\/background\]/gi, "<span style=\"background-color: #$2;\">$3</span>"],
+    [/\[background=("?)([^";]+?)\1\]((?:(?!\[background(?:=[^;]*?)\]).)*?)\[\/background\]/gi, "<span style=\"background-color: $2;\">$3</span>"],
+    [/\[font=("?)([^";]*?)\1\]((?:(?!\[size(?:=[^;]*?)\]).)*?)\[\/font\]/gi, "<span style=\"font-family: $2;\">$3</span>"],
+    [/\[(center|left|right|justify)\]((?:(?!\[\1\]).)*?)\[\/\1\]/gi, "<div style=\"text-align: $1;\">$2</div>"],
+    [/\[url\]([^\"]*?)\[\/url\]/gi, "<a href=\"$1\">$1</a>"],
+    [/\[url=("?)([^\"]*?)\1\]((?:(?!\[url(?:=.*?)\]).)*?)\[\/url\]/gi, "<a href=\"$2\">$3</a>"],
+    [/\[alt=("?)([^\"]*?)\1\]((?:(?!\[alt(?:=.*?)\]).)*?)\[\/alt\]/gi, "<span title=\"$2\">$3</span>"],
+    [/\[img\]([^\"]*?)\[\/img\]/gi, "<img src=\"$1\">"],
+    [/\[img=(\d*?)x(\d*?)\]([^\"]*?)\[\/img\]/gi, "<img src=\"$3\" width=\"$1\" height=\"$2\">"],
+    [/\[spoiler\]((?:(?!\[spoiler(?: .*?)?\]).)*?)\[\/spoiler\]/gi, "<div class=\"spoiler closed\"><div style=\"text-align: center;\"><input type=\"button\" value=\"Show\" data-close=\"Hide\" data-open=\"Show\"></div><div>$1</div></div>"],
+    [/\[spoiler open=("?)([^\"]*?)\1 close=("?)([^\"]*?)\3\]((?:(?!\[spoiler(?: .*?)?\]).)*?)\[\/spoiler\]/gi, "<div class=\"spoiler closed\"><div style=\"text-align: center;\"><input type=\"button\" value=\"$2\" data-open=\"$2\" data-close=\"$4\"></div><div>$5</div></div>"],
+    [/\[spoiler close=("?)([^\"]*?)\1 open=("?)([^\"]*?)\3\]((?:(?!\[spoiler(?: .*?)?\]).)*?)\[\/spoiler\]/gi, "<div class=\"spoiler closed\"><div style=\"text-align: center;\"><input type=\"button\" value=\"$4\" data-open=\"$4\" data-close=\"$2\"></div><div>$5</div></div>"],
+    [/\[flash=(\d*?)x(\d*?)\](.*?)\[\/flash\]/gi, "<object type=\"application/x-shockwave-flash\" data=\"$3\" width=\"$1\" height=\"$2\"></object>"],
+    [/\[user\](.+?)\[\/user\]/gi, "<a class=\"usertag\" href=\"/user/?u=$1\" data-userid=\"$1\">@...</a>"]
+  ],
+  toggleSpoiler: function() {
+    if(this.parentNode.parentNode.classList.contains("closed")) {
+      this.value = this.getAttribute("data-close");
+      this.parentNode.parentNode.classList.remove("closed");
+      this.parentNode.parentNode.classList.add("open");
+    } else if(this.parentNode.parentNode.classList.contains("open")) {
+      this.value = this.getAttribute("data-open");
+      this.parentNode.parentNode.classList.remove("open");
+      this.parentNode.parentNode.classList.add("closed");
+    }
+  },
+  parseBBCode: function(code, noHTML) {
+    if(noHTML) {
+      code = [code.replace(/</g, "&lt;").replace(/>/g, "&gt;")];
+    } else {
+      code = code.split(/\<(textarea|style)(?:(?: |\n)(?:.|\n)*?)?\>(?:.|\n)*?\<\/\2\>/gi);
+      for(var i = 2; i < code.length; i += 2) {
+        code.splice(i, 1);
+      }
+    }
+    for(var i = 0; i < code.length; i += 2) {
+      var prevCode;
+      while(prevCode != code[i]) {
+        prevCode = code[i];
+        for(var j = 0; j < MSPFA.BBC.length; j++) {
+          code[i] = code[i].replace(MSPFA.BBC[j][0], MSPFA.BBC[j][1]);
+        }
+      }
+    }
+    code = code.join("");
+    var e = document.createElement("span");
+    e.innerHTML = code;
+    var es = e.querySelectorAll("*");
+    for(var i = es.length-1; i >= 0; i--) {
+      if(es[i].tagName == "PARAM") {
+        if(es[i].name.trim() == "allowScriptAccess") {
+          es[i].parentNode.removeChild(es[i]);
+        }
+      } else {
+        for(var j = 0; j < es[i].attributes.length; j++) {
+          if(es[i].attributes[j].name.toLowerCase().indexOf("on") == 0 || (typeof es[i][es[i].attributes[j].name.toLowerCase()] == "string" && /^(?:javascript|data):/.test(es[i][es[i].attributes[j].name.toLowerCase()])) || /^(?:javascript|data):/.test(es[i].attributes[j].value) || es[i].attributes[j].name.toLowerCase() == "allowscriptaccess") {
+            es[i].removeAttribute(es[i].attributes[j].name);
+          }
+        }
+      }
+    }
+    try {
+      var sins = e.querySelectorAll(".spoiler > div:first-child > input");
+      for(var i = 0; i < sins.length; i++) {
+        sins[i].addEventListener("click", MSPFA.toggleSpoiler);
+      }
+      var sdivs = e.querySelectorAll(".spoiler > div:last-child");
+      for(var i = 0; i < sdivs.length; i++) {
+        var rembrc = true;
+        while(rembrc) {
+          rembrc = false;
+          var rembr = sdivs[i];
+          while(rembr = rembr.firstChild) {
+            if(rembr.tagName == "BR") {
+              rembr.parentNode.removeChild(rembr);
+              rembrc = true;
+              break;
+            }
+          }
+          rembr = sdivs[i];
+          while(rembr = rembr.lastChild) {
+            if(rembr.tagName == "BR") {
+              rembr.parentNode.removeChild(rembr);
+              rembrc = true;
+              break;
+            }
+          }
+        }
+      }
+    } catch (err) { }
+    var usertags = e.querySelectorAll("a.usertag");
+    return e;
+  },
+  slide: []
+}
+
+let adventureData
+
+// Get JSON
+window.addEventListener('DOMContentLoaded', (event) => {
+  fetch(typeof jsonURL !== 'undefined' ? jsonURL : "/assets/json/adventure.json").then(response => response.json()).then(json => loadAdventure(json));
+});
+
+const clickLink = (event, link) => {
+  console.log(link)
+  event.preventDefault()
+  history.pushState(null, '', link)
+  loadPage()
+}
+
+const getUrlPage = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const p = urlParams.get("p")
+  return p ? p : "home"
+}
+
+const loadIntoElement = (id, element) => {
+  console.log(id, element)
+  document.getElementById(id).innerHTML = ""
+  document.getElementById(id).append(element)
+}
+
+const loadAdventure  = data => {
+  adventureData = data
+  MSPFA.story = data
+  document.title = adventureData.n
+  document.getElementById("favicon").href = adventureData.o
+  document.getElementById("goback").addEventListener("click", evt => clickLink(evt, document.getElementById("goback").href))
+  loadPage()
+}
+
+const genPageLinks = (pages, linkIndexs) => {
+  const span = document.createElement("span")
+  linkIndexs.forEach(pageIndex => {
+    if (pages[pageIndex - 1]) {
+      if (pages[pageIndex - 1].d < new Date().getTime()) {
+
+        preloadImages(pageIndex)
+
+        const a = document.createElement("a")
+        a.href = `?p=${pageIndex}`
+        a.append(MSPFA.parseBBCode(pages[pageIndex - 1].c))
+        a.addEventListener("click", evt => clickLink(evt, a.href))
+    
+        const div = document.createElement("div")
+    
+        div.append(a)
+        span.append(div)
+
+      }
+    }
+  })
+  return span
+}
+
+const loadPage = () => {
+  // Scroll to top
+  window.scrollTo(0, 0)
+
+  const p = getUrlPage()
+
+
+
+  document.body.className = "mspfa p" + p
+  
+  document.getElementById("gobackbar").style.display = "none"
+  document.getElementById("goback").style.display = "none"
+  document.getElementById("prelaod").innerHTML = ""
+  
+  // If Log, load log p
+  if (p == "log") {
+    loadLog()
+    return
+  }
+
+
+  if (p == "pony") {
+      loadPony()
+      return
+  }
+
+
+  if (p == "WDGASTER") {
+      loadGaster()
+      return
+  }
+
+  // If page number too large
+  if (!isNaN(p) && p > adventureData.p.length) {
+    loadIntoElement("command", MSPFA.parseBBCode("No page found"))
+    loadIntoElement("content", MSPFA.parseBBCode("This page does not exist"))
+    loadIntoElement("links", MSPFA.parseBBCode(""))
+    return
+  }
+
+  let pageData
+
+  if (isNaN(p)) {
+    pageData = adventureData.extra ? adventureData.extra[p] ?? adventureData.p[0] : adventureData.p[0]
+  } else {
+    pageData = adventureData.p[p - 1]
+  }
+
+  // if unix date too high
+  if (pageData.d > new Date().getTime()) {
+    loadIntoElement("command", MSPFA.parseBBCode("No page found"))
+    loadIntoElement("content", MSPFA.parseBBCode("This page is not available yet"))
+    loadIntoElement("links", MSPFA.parseBBCode(""))
+    return
+  }
+
+  // Load given page
+  loadIntoElement("command", MSPFA.parseBBCode(pageData.c))
+  loadIntoElement("content", MSPFA.parseBBCode(pageData.b))
+  loadIntoElement("links", genPageLinks(adventureData.p, pageData.n))
+  if ("theme" in pageData) document.body.className = pageData.theme + " mspfa p" + p
+
+  // Gen go back number
+  var backid = 0;
+  adventureData.p.forEach((e, i) => {
+    if (e.n.includes(parseInt(p))) backid = i + 1
+  })
+  if (backid) {
+    if (document.getElementById("gobackbar")) document.getElementById("gobackbar").style.display = "inline"
+    document.getElementById("goback").style.display = "inline"
+    document.getElementById("goback").href = "?p=" + backid
+    preloadImages(backid)
+  }
+
+  // FINAL run all MSPFA slides
+  MSPFA.slide.forEach(func => func())
+
+
+
+    // from 3764 to 4081
+    // p4082 is temporarily SBaHJ
+    // 3797 is when the ROOMS start changing (room02)
+  if (!isNaN(p) && 3764 <= p && p <= 4081) {
+    filegarden = "https://file.garden/aOgKdPFhxWt7Kb9m/storyfiles/hs2/scratch/"
+    document.getElementById("cssSet").href = "/assets/css/scratchstyle.css"
+    document.getElementById("headerDiv").style.display = "flex"
+    if (p < 3797) {
+        document.getElementById("headerImg").src = filegarden + "room.gif"
+    } else if (p <= 3874) {
+        temp = p - 3795 // 3797 --> room02.png
+        pString = temp.toString()
+        if (pString.length == 1) { pString = "0" + pString }
+        document.getElementById("headerImg").src = filegarden + "room" + pString + ".gif"
+    } else if (p == 4036) {
+        document.getElementById("headerImg").src = filegarden + "room86.gif"
+    } else if (4036 < p && p < 4052) {
+        document.getElementById("headerImg").src = filegarden + "room87.gif"
+    } else if (p >= 4052) {
+        temp = p - 3964 // 4052 --> room88.png
+        pString = temp.toString()
+        document.getElementById("headerImg").src = filegarden + "room" + pString + ".gif"
+
+     } else {
+        pString = ""
+        switch (p) {
+            case 3874:
+                pString = "79"
+                break;
+            case 3895:
+                pString = "81"
+                break;
+            case 3936:
+                pString = "82"
+                break;
+            case 3974:
+                pString = "83"
+                break;
+            case 4002:
+                // TODO: the run from 4002 to 4019 uses room 85 as header not room 80
+                pString = "84"
+                break;
+            default:
+                pString = ""
+        }
+        if (4002 < p && p < 4036) { pString = "85" }
+        else { pString = "80" }
+        document.getElementById("headerImg").src = filegarden + "room" + pString + ".gif"
+    }
+    // document.getElementById("headerImg").title = "hover text is working!"
+  } else if (p == 4082) {
+    document.getElementById("cssSet").href = "/assets/css/sbahjstyle.css"
+    document.getElementById("headerDiv").style.display = "none"
+    document.getElementById("headerImg").src = ""
+  } else if (p == 4109) {
+    document.getElementById("cssSet").href = "/assets/css/cascadestyle.css"
+    document.getElementById("headerDiv").style.display = "flex"
+    // document.getElementById("headerDiv").style.display = "none"
+    document.getElementById("headerImg").src = "/assets/images/header_cascade.gif"
+   
+  } else if (p == 8087) {
+    document.getElementById("cssSet").href = "/assets/css/collidestyle.css";
+    document.getElementById("headerDiv").style.display = "flex";
+    document.getElementById("headerImg").src = "/assets/images/collide_header.gif";
   } else if (p == 8127) {
     document.getElementById("cssSet").href = "/assets/css/act7style.css";
     document.getElementById("headerDiv").style.display = "flex";
     document.getElementById("headerImg").src = "/assets/images/act7_header.gif";
-  } else if (5714 <= p && p <= 5777) {
-    document.getElementById("cssSet").href = "/assets/css/trickster.css";
-    document.getElementById("headerDiv").style.display = "flex";
-    document.getElementById("headerImg").outerHTML =
-      '<object id="headerImg" type="application/x-shockwave-flash" ' +
-      'data="/assets/images/trickster_sitegraphics/menu.swf" ' +
-      'width="950" height="20"></object>';
+  //} else if (5713 < p && p < 5778) {
+  //  document.getElementById("cssSet").href = "/assets/css/trickster.css";
+  //  document.getElementById("headerDiv").style.display = "flex";
+  //  document.getElementById("headerImg").outerHTML =
+  //      '<object id="headerImg" type="application/x-shockwave-flash" ' +
+  //      'data="/assets/images/trickster_sitegraphics/menu.swf" ' +
+  //      'width="950" height="20"></object>';
+
   } else if (
     (6242 < p && p < 6277) ||
     (6474 < p && p < 6530) ||
@@ -49,3 +383,79 @@
     document.getElementById("headerImg").src = "";
   }
   };
+
+    // TODO: hussie alt text 
+    // TODO: LE cool images
+    //
+
+
+const loadLog = () => {
+  // Generate Log link list
+  let ul = document.createElement("ul")
+  adventureData.p.filter(p => p.d < new Date().getTime()).forEach((pageData, index) => {
+    const date = new Date(pageData.d).toLocaleDateString("ja")
+
+    const a = document.createElement("a")
+    a.href = `?p=${index + 1}`
+    a.append(MSPFA.parseBBCode(pageData.c))
+    a.addEventListener("click", evt => clickLink(evt, a.href))
+    
+    const li = document.createElement("li")
+    li.append(document.createTextNode(date + ": "))
+    li.append(a)
+
+    ul.prepend(li)
+  })
+
+  ul.style.textAlign = "left"
+  ul.style.listStyleType = "none"
+  ul.style.padding = "0"
+
+  loadIntoElement("command", MSPFA.parseBBCode(adventureData.n + "のログ"))
+  loadIntoElement("content", ul)
+  loadIntoElement("links", MSPFA.parseBBCode(""))
+}
+
+const loadGaster = () => {
+  loadIntoElement("command", MSPFA.parseBBCode("GASTER????"))
+  loadIntoElement("content", MSPFA.parseBBCode("[flash=650x450]/assets/luis.swf[/flash]"))
+  loadIntoElement("links", MSPFA.parseBBCode(""))
+  loadIntoElement("startover", MSPFA.parseBBCode(""))
+}
+
+const loadPony = () => {
+  loadIntoElement("command", MSPFA.parseBBCode("[S] 乗れ。"))
+  loadIntoElement("content", MSPFA.parseBBCode("[flash=650x450]https://file.garden/aOgKdPFhxWt7Kb9m/storyfiles/hs2/pony/pony_hq.swf[/flash]"))
+  loadIntoElement("links", MSPFA.parseBBCode(""))
+  loadIntoElement("startover", MSPFA.parseBBCode(""))
+}
+
+const preloadImages = pageIndex => {
+  if (adventureData.p[pageIndex - 1]) {
+    const body = adventureData.p[pageIndex - 1].b
+    const imgRegex = body.match(/\[img\](?<link>[^\"]*?)\[\/img\]|\[img=(\d*?)x(\d*?)\]([^\"]*?)\[\/img\]/gi)
+    if (imgRegex) document.getElementById("prelaod").append(MSPFA.parseBBCode(imgRegex.join(" ")))
+  }
+}
+
+
+window.addEventListener("keydown", function(evt) {
+  if (isNaN(getUrlPage())) {
+    return
+  }
+
+  if (evt.key == "ArrowRight") {
+    clickLink(evt, this.document.querySelector("#links a").href)
+  }
+
+  if (evt.key == "ArrowLeft") {
+    clickLink(evt, this.document.querySelector("#goback").href)
+  }
+
+  if (evt.key == " ") {
+    evt.preventDefault()
+    this.document.querySelectorAll(".spoiler input").forEach(e => {
+      e.click()
+    })
+  }
+})
