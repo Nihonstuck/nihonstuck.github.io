@@ -166,16 +166,28 @@ ruffle-object {
    ========================================================== */
 
 /* Widen the frame: 650 + 14 + 650 = 1314, plus 150px of grey each side */
-body.x2 .pageFrame   { width: 1614px; }
+body.x2 { overflow-x: hidden; }
+body.x2 .pageFrame {
+  width: 1614px;
+  margin-left: 0;
+  margin-right: 0;
+  position: relative;
+  left: 50%;                    /* center on the parent, whatever its width */
+  transform: translateX(-50%);
+}
 body.x2 .pageContent { width: 1314px; max-width: none; }
 
 /* Each panel carries its own command line */
 body.x2 #command { display: none; }
 body.x2 #content { width: 100%; padding: 0; margin: 0; }
 
+/* The combo is always 1314px wide and centered on its container, so it
+   still lines up when a narrower wrapper (such as a 650px centered one)
+   sits between .pageContent and #content. */
 .x2Combo {
   display: flex;
-  width: 100%;
+  width: 1314px;
+  margin-left: calc(50% - 657px);
 }
 
 .x2Panel {

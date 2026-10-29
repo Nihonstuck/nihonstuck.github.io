@@ -495,7 +495,7 @@ const loadPage = () => {
     document.getElementById("headerImg").src = "";
   } else if (5788 <= p && p <= 5925) {
     document.getElementById("cssSet").href = "/assets/css/uhcstyle-x2.css";
-    document.getElementById("headerDiv").style.display = "none";
+    document.getElementById("headerDiv").style.display = "flex";
     document.getElementById("headerImg").src = "/assets/images/act6act5act1x2combo.gif";
   } else {
     document.getElementById("cssSet").href = "/assets/css/uhcstyle.css";
