@@ -364,16 +364,24 @@ const loadPage = () => {
                 tooltipNum + ".gif"
 
             tooltipImg.style.display = "none"
-            tooltipImg.style.position = "absolute"
+            tooltipImg.style.position = "fixed"
             tooltipImg.style.zIndex = "9999"
             tooltipImg.style.maxWidth = "none"
             tooltipImg.style.pointerEvents = "none"
 
-            headerImg.parentElement.style.position = "relative"
-            headerImg.parentElement.appendChild(tooltipImg)
+            document.body.appendChild(tooltipImg)
+
+            const moveTooltip = (e) => {
+                tooltipImg.style.left = (e.clientX + 12) + "px"
+                tooltipImg.style.top = (e.clientY + 12) + "px"
+            }
 
             // on* properties (not addEventListener) so handlers can't stack
-            headerImg.onmouseenter = () => { tooltipImg.style.display = "block" }
+            headerImg.onmouseenter = (e) => {
+                moveTooltip(e)
+                tooltipImg.style.display = "block"
+            }
+            headerImg.onmousemove = moveTooltip
             headerImg.onmouseleave = () => { tooltipImg.style.display = "none" }
         }
     }
