@@ -143,10 +143,18 @@ const clickLink = (event, link) => {
   loadPage()
 }
 
+// x2 combos: 5788+5789, 5790+5791, ... 5924+5925
+const X2_START = 5788
+const X2_END = 5925
+const isX2First = n => n >= X2_START && n < X2_END && (n - X2_START) % 2 === 0
+
 const getUrlPage = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const p = urlParams.get("p")
-  return p ? p : "home"
+  const page = p ? p : "home"
+  // The second half of an x2 combo is shown with the first
+  if (isX2First(Number(page) - 1)) return String(Number(page) - 1)
+  return page
 }
 
 const loadIntoElement = (id, element) => {
@@ -247,7 +255,23 @@ const loadPage = () => {
   // Load given page
   loadIntoElement("command", MSPFA.parseBBCode(pageData.c))
   loadIntoElement("content", MSPFA.parseBBCode(pageData.b))
-  loadIntoElement("links", genPageLinks(adventureData.p, pageData.n))
+
+  // x2 combo: append page N+1 below page N
+  let linkData = pageData
+  const second = isX2First(Number(p)) ? adventureData.p[Number(p)] : null
+  if (second && second.d < new Date().getTime()) {
+    const divider = document.createElement("div")
+    divider.className = "x2Divider"
+
+    const cmd = document.createElement("div")
+    cmd.className = "command"
+    cmd.append(MSPFA.parseBBCode(second.c))
+
+    document.getElementById("content").append(divider, cmd, MSPFA.parseBBCode(second.b))
+    linkData = second
+  }
+
+  loadIntoElement("links", genPageLinks(adventureData.p, linkData.n))
   if ("theme" in pageData) document.body.className = pageData.theme + " mspfa p" + p
 
   // Gen go back number
@@ -447,6 +471,10 @@ const loadPage = () => {
     document.getElementById("cssSet").href = "/assets/css/bigstyle.css";
     document.getElementById("headerDiv").style.display = "none";
     document.getElementById("headerImg").src = "";
+  } else if (5788 <= p && p <= 5925) {
+    document.getElementById("cssSet").href = "/assets/css/uhcstyle-x2.css";
+    document.getElementById("headerDiv").style.display = "none";
+    document.getElementById("headerImg").src = "/assets/images/act6act5act1x2combo";
   } else {
     document.getElementById("cssSet").href = "/assets/css/uhcstyle.css";
     document.getElementById("headerDiv").style.display = "none";
