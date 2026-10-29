@@ -143,7 +143,7 @@ const clickLink = (event, link) => {
   loadPage()
 }
 
-// x2 combos: 5788+5789, 5790+5791, ... 5924+5925
+// x2 combos (shown side by side): 5788+5789, 5790+5791, ... 5924+5925
 const X2_START = 5788
 const X2_END = 5925
 const isX2First = n => n >= X2_START && n < X2_END && (n - X2_START) % 2 === 0
@@ -253,26 +253,48 @@ const loadPage = () => {
   }
 
   // Load given page
-  loadIntoElement("command", MSPFA.parseBBCode(pageData.c))
-  loadIntoElement("content", MSPFA.parseBBCode(pageData.b))
-
-  // x2 combo: append page N+1 below page N
   let linkData = pageData
+  let isX2 = false
   const second = isX2First(Number(p)) ? adventureData.p[Number(p)] : null
+
   if (second && second.d < new Date().getTime()) {
+    // x2 combo: page N and page N+1 side by side
+    isX2 = true
+    linkData = second
+
+    const makePanel = data => {
+      const panel = document.createElement("div")
+      panel.className = "x2Panel"
+
+      const cmd = document.createElement("div")
+      cmd.className = "command"
+      cmd.append(MSPFA.parseBBCode(data.c))
+
+      const body = document.createElement("div")
+      body.className = "content"
+      body.append(MSPFA.parseBBCode(data.b))
+
+      panel.append(cmd, body)
+      return panel
+    }
+
     const divider = document.createElement("div")
     divider.className = "x2Divider"
 
-    const cmd = document.createElement("div")
-    cmd.className = "command"
-    cmd.append(MSPFA.parseBBCode(second.c))
+    const combo = document.createElement("div")
+    combo.className = "x2Combo"
+    combo.append(makePanel(pageData), divider, makePanel(second))
 
-    document.getElementById("content").append(divider, cmd, MSPFA.parseBBCode(second.b))
-    linkData = second
+    loadIntoElement("command", document.createElement("span"))
+    loadIntoElement("content", combo)
+  } else {
+    loadIntoElement("command", MSPFA.parseBBCode(pageData.c))
+    loadIntoElement("content", MSPFA.parseBBCode(pageData.b))
   }
 
   loadIntoElement("links", genPageLinks(adventureData.p, linkData.n))
   if ("theme" in pageData) document.body.className = pageData.theme + " mspfa p" + p
+  if (isX2) document.body.classList.add("x2")
 
   // Gen go back number
   var backid = 0;
@@ -474,7 +496,7 @@ const loadPage = () => {
   } else if (5788 <= p && p <= 5925) {
     document.getElementById("cssSet").href = "/assets/css/uhcstyle-x2.css";
     document.getElementById("headerDiv").style.display = "none";
-    document.getElementById("headerImg").src = "/assets/images/act6act5act1x2combo";
+    document.getElementById("headerImg").src = "/assets/images/act6act5act1x2combo.gif";
   } else {
     document.getElementById("cssSet").href = "/assets/css/uhcstyle.css";
     document.getElementById("headerDiv").style.display = "none";
