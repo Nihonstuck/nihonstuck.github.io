@@ -101,6 +101,15 @@ ruffle-object {
   margin: auto;
 }
 
+#headerDiv {
+    width: 1550px !important;
+}
+
+#headerImg {
+    width: 1550px !important;
+    height: auto;
+}
+
 #command,
 .command {
   text-align: center;
@@ -137,7 +146,7 @@ ruffle-object {
 
 #links > span > div::before,
 .links > span > div::before {
-  content: "> "
+  content: "> ";
 }
 
 .bottomLinks {
