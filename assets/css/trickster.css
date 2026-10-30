@@ -1,6 +1,6 @@
 body {
   /* background: #5a5a5a; */
-  background-image: url("./trickster_sitegraphics/images/Z2.jpg");
+  background-image: url("./ホームスタック_files/Z2.jpg");
   margin: 0;
   font-size: 14px;
   color: #f9fd6b;
@@ -55,11 +55,10 @@ a {
 }
 
 .pageFrame {
-  /* background: #c6c6c6; */
-  background-image: url("./trickster_sitegraphics/images/bluetile.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: space repeat;
+  background-image: url("/assets/images/trickster_sitegraphics/Z2.gif");
+  background-repeat: repeat;
+  background-size: auto;
+  background-position: top left;
   width: 950px;
   padding-top: 7px;
   padding-bottom: 23px;
@@ -70,21 +69,11 @@ a {
   font-weight: 600;
 }
 
-/* .p6 .pageFrame { */
-/*   background: #c600c6; */
-/*   width: 950px; */
-/*   padding-top: 7px; */
-/*   padding-bottom: 23px; */
-/*   margin: 0 auto; */
-/*   flex: 0 1 auto; */
-/*   display: flex; */
-/*   justify-content: center; */
-/*   font-weight: 600; */
-/* } */
-
 .pageContent {
-  /* background: #eee; */
-  background: #ff73fd;
+  background-image: url("/assets/images/trickster_sitegraphics/bluetile.gif");
+  background-repeat: repeat;
+  background-size: auto;
+  background-position: top left;
   max-width: 950px;
   width: 650px;
   display: flex;
@@ -155,9 +144,18 @@ a {
   margin: 0 25px 30px;
 }
 
+#links a {
+  display: inline-block;
+  width: 150px;   /* set to sucker.gif's real width */
+  height: 50px;   /* set to sucker.gif's real height */
+  background: url("/assets/images/trickster_sitegraphics/sucker.gif") no-repeat center / contain;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+/* remove the "> " marker so it doesn't sit next to the image */
 #links > span > div::before {
-  content: "> ";
-  color: #fb060b;
+  content: none;
 }
 
 .bottomLinks {
