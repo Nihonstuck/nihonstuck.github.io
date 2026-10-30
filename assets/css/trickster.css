@@ -93,11 +93,10 @@ a {
   box-sizing: border-box;
   padding-left: 12px;
   padding-right: 12px;
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   margin: auto;
-  background: #ff73fd;
 }
 
 
@@ -108,7 +107,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 30px;
+  margin: auto;
   background: #ff73fd;
 }
 
