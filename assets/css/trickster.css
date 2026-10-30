@@ -1,6 +1,9 @@
 body {
   /* background: #5a5a5a; */
-  background-image: url("/assets/images/trickster_sitegraphics/Z2.jpg");
+  background-image: url("/assets/images/trickster_sitegraphics/Z2.gif");
+  background-repeat: repeat;
+  background-size: auto;
+  background-position: top left;
   margin: 0;
   font-size: 14px;
   color: #f9fd6b;
@@ -48,11 +51,10 @@ a {
   margin: 0 .3em; 
 }
 
-.footerFace {
-    content: url(/assets/images/mspalogo_trickster.gif);
+.bannerImage {
+    content: url("/assets/images/mspalogo_trickster.gif");
     margin: 0 0;
 }
-
 .pageFrame {
   background-image: url("/assets/images/trickster_sitegraphics/bluetile.gif");
   background-repeat: repeat;
@@ -106,7 +108,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: auto;
+  margin: 30px;
   background: #ff73fd;
 }
 
