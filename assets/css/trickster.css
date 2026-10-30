@@ -36,6 +36,9 @@ a {
   color: white;
   margin: auto;
 }
+.navBanner .navList.defaultNav {
+    display: none;
+}
 
 .homosuckNav {
     display: none;
@@ -93,22 +96,23 @@ a {
   box-sizing: border-box;
   padding-left: 12px;
   padding-right: 12px;
-  display: none;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   margin: auto;
+  background: transparent;
 }
 
 
 .header {
   box-sizing: border-box;
-  /* padding-left: 12px; */
-  /* padding-right: 12px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: auto;
   background: #ff73fd;
+  position: relative;
+  left: 25px;
 }
 
 #command {
