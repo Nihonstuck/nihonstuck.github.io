@@ -502,7 +502,28 @@ const loadPage = () => {
        '<object id="headerImg" type="application/x-shockwave-flash" ' +
        'data="/assets/images/trickster_sitegraphics/menu.swf" ' +
        'width="950" height="20"></object>';
-
+  } else if (
+    (p == 700) ||
+    (p == 2008) ||
+    (p == 2011) ||
+    (p == 2042) ||
+    (p == 2055) ||
+    (p == 2162) ||
+    (p == 2197) ||
+    (p == 2547) ||
+    (p == 4145) ||
+    (p == 4298) ||
+    (p == 4412) ||
+    (p == 4533) ||
+    (p == 4821) ||
+    (p == 4864) ||
+    (p == 4878) ||
+    (p == 5706) ||
+    (p == 5966)
+  ) {
+    document.getElementById("cssSet").href = "/assets/css/footnotes.css";
+    document.getElementById("headerDiv").style.display = "none";
+    document.getElementById("headerImg").src = "";
   } else if (
     (6242 < p && p < 6277) ||
     (6474 < p && p < 6530) ||
