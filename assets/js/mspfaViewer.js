@@ -154,8 +154,8 @@ const updateFootnotes = p => {
 
   if (!footnotesData || isNaN(p)) return;
 
-  const pageID = String(p).padStart(6, "0");
-  const notes = footnotesData.story?.[pageID];
+  const pageID = String(p);
+  const notes = footnotesData[0]?.story?.[pageID];
 
   if (!notes || notes.length === 0) return;
 
