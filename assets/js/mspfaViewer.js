@@ -131,6 +131,49 @@ window.MSPFA = {
 
 let adventureData
 
+let footnotesData = null;
+
+fetch("/assets/json/footnotes.json")
+  .then(response => {
+    if (!response.ok) throw new Error("Failed to load footnotes");
+    return response.json();
+  })
+  .then(data => {
+    footnotesData = data;
+    updateFootnotes(getUrlPage());
+  })
+  .catch(error => console.error("Footnotes:", error));
+
+
+const updateFootnotes = p => {
+  const container = document.getElementById("footnotes");
+  if (!container) return;
+
+  container.replaceChildren();
+  container.hidden = true;
+
+  if (!footnotesData || isNaN(p)) return;
+
+  const pageID = String(p).padStart(6, "0");
+  const notes = footnotesData.story?.[pageID];
+
+  if (!notes || notes.length === 0) return;
+
+  notes.forEach(note => {
+    const content = document.createElement("div");
+    content.className = "footnote-content";
+    content.textContent = note.content;
+
+    const author = document.createElement("div");
+    author.className = "footnote-author";
+    author.textContent = note.author || "";
+
+    container.append(content, author);
+  });
+
+  container.hidden = false;
+};
+
 // Get JSON
 window.addEventListener('DOMContentLoaded', (event) => {
   fetch(typeof jsonURL !== 'undefined' ? jsonURL : "/assets/json/adventure.json").then(response => response.json()).then(json => loadAdventure(json));
@@ -201,6 +244,8 @@ const loadPage = () => {
   window.scrollTo(0, 0)
 
   const p = getUrlPage()
+
+  updateFootnotes(p)
 
 
 

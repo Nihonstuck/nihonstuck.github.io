@@ -110,7 +110,7 @@ a {
   justify-content: space-between;
   align-items: center;
   margin: auto;
-  background: #ff73fd;
+  background: transparent;
   position: relative;
   left: 25px;
 }
