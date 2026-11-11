@@ -112,9 +112,7 @@ a {
   margin: auto;
   background: transparent;
   position: relative;
-  left: 25px;
   height: 23px;
-  background-image: url('/images/trickster_theme_headercandy.gif');
   animation: trickster-scroll 20s linear infinite;
   -webkit-animation: trickster-scroll 20s linear infinite;
 }
@@ -137,7 +135,11 @@ a {
   text-align: center;
   color: #f9fd6b;
 }
-
+.headerImg {
+  height: 23px;
+  animation: trickster-scroll 20s linear infinite;
+  -webkit-animation: trickster-scroll 20s linear infinite;
+}
 .trickster-text {
   -webkit-animation: trickster-glow 0.25s linear infinite;
   animation: trickster-glow 0.25s linear infinite;
