@@ -498,7 +498,7 @@ const loadPage = () => {
   } else if (5713 < p && p < 5778) {
     document.getElementById("cssSet").href = "/assets/css/trickster.css";
     document.getElementById("headerDiv").style.display = "flex";
-    document.getElementById("headerImg").src = "/assets/images/trickster_theme_headercandy.gif";
+    document.getElementById("headerImg").src = "/assets/images/trickster_sitegraphics/trickster_theme_headercandy.gif";
   } else if (
     (p == 700) ||
     (p == 2008) ||
