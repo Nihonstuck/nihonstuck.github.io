@@ -113,6 +113,10 @@ a {
   background: transparent;
   position: relative;
   left: 25px;
+  height: 23px;
+  background-image: url('/images/trickster_theme_headercandy.gif');
+  animation: trickster-scroll 20s linear infinite;
+  -webkit-animation: trickster-scroll 20s linear infinite;
 }
 
 #command {
@@ -132,6 +136,11 @@ a {
   font-size: 14px;
   text-align: center;
   color: #f9fd6b;
+}
+
+.trickster-text {
+  -webkit-animation: trickster-glow 0.25s linear infinite;
+  animation: trickster-glow 0.25s linear infinite;
 }
 
 /* #content img { */
@@ -187,3 +196,8 @@ a {
 .spoiler.closed>div:last-child {
 	display: none;
 }
+
+@-webkit-keyframes trickster-glow{0%{color: #fff6d1;}33%{color: #f0d1ff;}100%{color: #d1ffe3;}}
+@keyframes trickster-glow{0%{color: #fff6d1;}50%{color: #f0d1ff;}100%{color: #d1ffe3;}}
+@-webkit-keyframes trickster-scroll{from{background-position:609px 0}to{background-position:0 0}}
+@keyframes trickster-scroll{from{background-position:609px 0}to{background-position:0 0}}
