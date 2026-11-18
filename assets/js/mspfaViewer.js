@@ -550,7 +550,8 @@ const loadPage = () => {
     (p == 6901) ||
     (p == 7449) ||
     (p == 7959) ||
-    (8088 < p && p < 8127) 
+    (8088 < p && p < 8127) ||
+    (p == 8130)
       
   ) {
     document.getElementById("cssSet").href = "/assets/css/bigstyle.css";
